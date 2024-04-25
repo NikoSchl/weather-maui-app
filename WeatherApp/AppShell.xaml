@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="WeatherApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:views="clr-namespace:WeatherApp.Views"
+    Title="WeatherApp"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="{Static i18n:AppResources.label_Main}">
+            <ShellContent
+                Title="{Static i18n:AppResources.label_Main}"
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="{Static i18n:AppResources.label_24hPreview}">
+            <ShellContent
+                Title="{Static i18n:AppResources.label_24hPreview}"
+                ContentTemplate="{DataTemplate views:TwentyFourHourPage}"
+                Route="TwentyFourHourPage" />
+        </Tab>
+        <Tab Title="{Static i18n:AppResources.label_7DayPreview}">
+            <ShellContent
+                Title="{Static i18n:AppResources.label_7DayPreview}"
+                ContentTemplate="{DataTemplate views:SevenDaysPreviewPage}"
+                Route="SevenDaysPreviewPage" />
+        </Tab>
+        <Tab Title="{Static i18n:AppResources.label_Settings}">
+            <ShellContent
+                Title="{Static i18n:AppResources.label_Settings}"
+                ContentTemplate="{DataTemplate views:SettingsPage}"
+                Route="SettingsPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

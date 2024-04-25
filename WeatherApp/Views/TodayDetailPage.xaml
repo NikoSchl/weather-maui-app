@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WeatherApp.Views.TodayDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
+    Title="TodayDetailPage"
+    x:DataType="viewModels:TodayDetailViewModel">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Herzlichen Glückwunsch, Sie haben die Today Detail Page erreicht!"
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

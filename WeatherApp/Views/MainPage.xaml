@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WeatherApp.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
+    x:DataType="viewModels:MainViewModel">
+
+    <StackLayout Padding="30,0" Spacing="25">
+
+        <Label
+            Margin="20"
+            SemanticProperties.HeadingLevel="Level1"
+            Style="{StaticResource Headline}"
+            Text="Sonnig bis Wolkig" />
+
+        <Image
+            Aspect="AspectFit"
+            HeightRequest="185"
+            SemanticProperties.Description="dot net bot in a race car number eight"
+            Source="son_wol.png" />
+
+        <Label
+            SemanticProperties.HeadingLevel="Level1"
+            Style="{StaticResource Headline}"
+            Text="12°" />
+
+        <Label Style="{StaticResource SubHeadline}" Text="Welcome to my Weather" />
+
+    </StackLayout>
+
+</ContentPage>
