@@ -9,5 +9,6 @@ public partial class TwentyFourHourPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = _viewModel;
+		ImageSource.FromFile("cloudy.png");
 	}
 }

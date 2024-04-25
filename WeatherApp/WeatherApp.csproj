@@ -98,7 +98,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Behaviors\" />
-	  <Folder Include="Converters\" />
 	  <Folder Include="Trigger\" />
 	</ItemGroup>
 

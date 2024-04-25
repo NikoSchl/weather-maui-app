@@ -14,14 +14,13 @@ namespace WeatherApp.ViewModels
 {
     public class SevenDayViewModel
     {
-        public DailyForecast DailyForecast { get; } = new DailyForecast();
         public ObservableCollection<DailyForecast> DailyForecasts { get; } = new ObservableCollection<DailyForecast>();
 
         public SevenDayViewModel()
         {
             for (int i = 0; i < 7; i++)
             {
-                DailyForecasts.Add(DailyForecast);
+                DailyForecasts.Add(new DailyForecast());
             }
         }
 

@@ -12,14 +12,20 @@ namespace WeatherApp.ViewModels
 {
     public class TwentyFourHourViewModel
     {
-        public HourlyForecast HourlyForecast { get; } = new HourlyForecast();
         public ObservableCollection<HourlyForecast> HourlyForecasts { get; } = new ObservableCollection<HourlyForecast>();
 
         public TwentyFourHourViewModel()
         {
             for (int i = 0; i < 7; i++)
             {
-                HourlyForecasts.Add(HourlyForecast);
+                WeatherCondition condition = WeatherCondition.snow;
+
+                if (i == 1)
+                    condition = WeatherCondition.sunny;
+                else if(i == 2)
+                    condition = WeatherCondition.rain;
+
+                HourlyForecasts.Add(new HourlyForecast {  Condition = condition});
             }
         }
 

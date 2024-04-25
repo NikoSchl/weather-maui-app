@@ -3,11 +3,15 @@
     x:Class="WeatherApp.Views.TwentyFourHourPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:WeatherApp.Converters"
     xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="24 Hour Preview"
     x:DataType="viewModels:TwentyFourHourViewModel">
+    <ContentPage.Resources>
+        <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
+    </ContentPage.Resources>
     <StackLayout>
         <Label
             HorizontalOptions="Center"
@@ -15,16 +19,23 @@
             VerticalOptions="Center" />
 
 
-        <ListView x:Name="_hourlyForecast" ItemsSource="{Binding HourlyForecasts}">
+        <ListView
+            x:Name="_hourlyForecast"
+            Margin="20"
+            ItemsSource="{Binding HourlyForecasts}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:HourlyForecast">
                     <ViewCell>
                         <Grid
-                            Margin="20"
+                            Padding="20"
+                            BackgroundColor="AliceBlue"
                             ColumnDefinitions=".30*,.40*,.30*">
                             <Label Grid.Column="0" Text="{Binding Date}" />
-                            <Image Grid.Column="1" Source="son_wol.png" />
-                            <Label Grid.Column="2" Text="{Binding Temperatur}" />
+                            <Image Grid.Column="1" Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="35"
+                                Text="{Binding Temperatur}" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

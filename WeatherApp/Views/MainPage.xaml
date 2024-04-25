@@ -17,7 +17,6 @@
         <Image
             Aspect="AspectFit"
             HeightRequest="185"
-            SemanticProperties.Description="dot net bot in a race car number eight"
             Source="son_wol.png" />
 
         <Label Style="{StaticResource Headline}" Text="12°" />

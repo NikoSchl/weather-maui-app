@@ -11,12 +11,12 @@ namespace WeatherApp.Models
 {
     public class DailyForecast : NotifyPropertyHelper
     {
-        private string _maxTemperatur = "12";
-        private string _minTemperatur = "6";
+        private float _maxTemperatur = 12;
+        private float _minTemperatur = 6;
 
         private Weekday _day;
 
-        public string MaxTemperatur 
+        public float MaxTemperatur 
         { 
             get
             {
@@ -29,7 +29,7 @@ namespace WeatherApp.Models
             }
         }
 
-        public string MinTemperatur
+        public float MinTemperatur
         {
             get
             {

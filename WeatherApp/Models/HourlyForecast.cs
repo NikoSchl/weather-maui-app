@@ -10,7 +10,7 @@ namespace WeatherApp.Models
 {
     public class HourlyForecast : NotifyPropertyHelper
     {
-        private string _temperatur = "25";
+        private float _temperatur = 25;
 
         // für die Uhrzeit/Stunde und fürs Datum
         private DateTime _date = DateTime.UtcNow;
@@ -18,7 +18,7 @@ namespace WeatherApp.Models
         private WeatherCondition _condition;
 
        
-        public string Temperatur
+        public float Temperatur
         {
             get { return _temperatur; }
             set
