@@ -14,9 +14,22 @@
             Text="24 h Preview"
             VerticalOptions="Center" />
 
-        <Button Margin="20,5,20,5" Text="5h" />
-        <Button Margin="20,5,20,5" Text="6h" />
 
+        <ListView x:Name="_hourlyForecast" ItemsSource="{Binding HourlyForecasts}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:HourlyForecast">
+                    <ViewCell>
+                        <Grid
+                            Margin="20"
+                            ColumnDefinitions=".30*,.40*,.30*">
+                            <Label Grid.Column="0" Text="{Binding Date}" />
+                            <Image Grid.Column="1" Source="son_wol.png" />
+                            <Label Grid.Column="2" Text="{Binding Temperatur}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackLayout>
 </ContentPage>

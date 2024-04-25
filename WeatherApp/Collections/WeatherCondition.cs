@@ -8,11 +8,10 @@ namespace WeatherApp.Collections
 {
     public enum WeatherCondition
     {
-        Sonnig,
-        Regen,
-        Wolken,
-        Gewitter,
-        Schnee,
-        Sturm
+        sunny,
+        rain,
+        cloudy,
+        snow,
+        storm
     }
 }
