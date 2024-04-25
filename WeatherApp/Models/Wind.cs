@@ -11,10 +11,10 @@ namespace WeatherApp.Models
 {
     public class Wind : NotifyPropertyHelper
     {
-        private string _windSpeed = string.Empty;
+        private float _windSpeed = 0;
         private Winddirection _windDirection;
 
-        public string Windspeed
+        public float Windspeed
         {
             get
             {

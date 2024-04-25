@@ -9,15 +9,16 @@
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="24 Hour Preview"
     x:DataType="viewModels:TwentyFourHourViewModel">
+
     <ContentPage.Resources>
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
+
     <StackLayout>
         <Label
             HorizontalOptions="Center"
             Text="24 h Preview"
             VerticalOptions="Center" />
-
 
         <ListView
             x:Name="_hourlyForecast"
@@ -30,7 +31,7 @@
                             Padding="20"
                             BackgroundColor="AliceBlue"
                             ColumnDefinitions=".30*,.40*,.30*">
-                            <Label Grid.Column="0" Text="{Binding Date}" />
+                            <Label Grid.Column="0" Text="{Binding Date, StringFormat='{0:t}'}" />
                             <Image Grid.Column="1" Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
                             <Label
                                 Grid.Column="2"
