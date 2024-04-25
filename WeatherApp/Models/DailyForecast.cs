@@ -16,7 +16,6 @@ namespace WeatherApp.Models
 
         private Weekday _day;
 
-
         public string MaxTemperatur 
         { 
             get
