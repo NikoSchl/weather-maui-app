@@ -28,6 +28,7 @@
 
         <Label Style="{StaticResource SubHeadline}" Text="Welcome to my Weather" />
 
+
     </StackLayout>
 
 </ContentPage>

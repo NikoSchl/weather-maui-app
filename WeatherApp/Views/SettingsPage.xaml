@@ -14,5 +14,6 @@
             Text="Settings"
             VerticalOptions="Center" />
 
+
     </StackLayout>
 </ContentPage>

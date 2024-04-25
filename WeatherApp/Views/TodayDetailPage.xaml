@@ -12,5 +12,6 @@
             HorizontalOptions="Center"
             Text="Herzlichen Glückwunsch, Sie haben die Today Detail Page erreicht!"
             VerticalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>

@@ -9,16 +9,6 @@ namespace WeatherApp.ViewModels
 {
     public class SevenDayViewModel
     {
-        private string test = string.Empty;
-
-        public string Test
-        {
-            get { return test; }
-            set
-            {
-                test = value;
-                Debug.WriteLine(value);
-            }
-        }
+       
     }
 }

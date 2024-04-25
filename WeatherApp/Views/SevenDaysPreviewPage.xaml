@@ -13,7 +13,6 @@
             HorizontalOptions="Center"
             Text="7 Days Preview"
             VerticalOptions="Center" />
-        <Entry Text="{Binding Test}" />
         <Button Margin="20,5,20,5" Text="Mo" />
         <Button
             Margin="20,5,20,5"
