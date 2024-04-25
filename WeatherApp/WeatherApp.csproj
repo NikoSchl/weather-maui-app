@@ -97,11 +97,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Collections\" />
-	  <Folder Include="Models\" />
 	  <Folder Include="Behaviors\" />
 	  <Folder Include="Converters\" />
-	  <Folder Include="Helpers\" />
 	  <Folder Include="Trigger\" />
 	</ItemGroup>
 

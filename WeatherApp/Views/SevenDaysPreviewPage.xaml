@@ -3,21 +3,56 @@
     x:Class="WeatherApp.Views.SevenDaysPreviewPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:collections="clr-namespace:WeatherApp.Collections"
     xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="7 Days Preview"
     x:DataType="viewModels:SevenDayViewModel">
 
-    <StackLayout>
+    <StackLayout Padding="20">
         <Label
             HorizontalOptions="Center"
-            Text="7 Days Preview"
+            Text="Daily Forecasts"
             VerticalOptions="Center" />
-        <Button Margin="20,5,20,5" Text="Mo" />
-        <Button
-            Margin="20,5,20,5"
-            Clicked="Button_Clicked"
-            Text="Di" />
-        <Entry Placeholder="e" />
+
+        <CollectionView
+            x:Name="_dailyForecasts"
+            BackgroundColor="AliceBlue"
+            ItemsLayout="HorizontalList"
+            ItemsSource="{Binding DailyForecasts}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:DailyForecast">
+                    <Grid
+                        Padding="5"
+                        BackgroundColor="Aqua"
+                        HeightRequest="350"
+                        RowDefinitions=".15*,.15*,.20*,.15*,.20*,.15*"
+                        WidthRequest="50">
+
+                        <Label Grid.Row="0" Text="{Binding Day}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Text="{Binding MaxTemperatur}"
+                            WidthRequest="20" />
+
+                        <Image Grid.Row="2" Source="son_wol.png" />
+
+                        <Label Grid.Row="3" Text="{Binding MaxTemperatur}" />
+
+                        <Image Grid.Row="4" Source="son_wol.png" />
+
+                        <Label Grid.Row="5" Text="{Binding MinTemperatur}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            HorizontalOptions="Center"
+            Text="min/max Temperatur"
+            VerticalOptions="Center" />
+
     </StackLayout>
 </ContentPage>

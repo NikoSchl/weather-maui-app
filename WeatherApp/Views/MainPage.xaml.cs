@@ -11,5 +11,6 @@ namespace WeatherApp.Views
             InitializeComponent();
             BindingContext = _viewModel;
         }
+
     }
 }

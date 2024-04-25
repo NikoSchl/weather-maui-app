@@ -9,13 +9,12 @@ using WeatherApp.Collections;
 
 namespace WeatherApp.Models
 {
-    public class DailyForecast : NotifyProperty
+    public class DailyForecast : NotifyPropertyHelper
     {
-        private string _maxTemperatur = string.Empty;
-        private string _minTemperatur = string.Empty;
+        private string _maxTemperatur = "12";
+        private string _minTemperatur = "6";
 
         private Weekday _day;
-        private string _dayForecast = string.Empty;
 
 
         public string MaxTemperatur 
@@ -57,17 +56,5 @@ namespace WeatherApp.Models
             }
         }
 
-        public string DayForecast
-        {
-            get
-            {
-                return _dayForecast;
-            }
-            set
-            {
-                _dayForecast = value;
-                OnPropertyChanged(nameof(DayForecast));
-            }
-        }
     }
 }

@@ -11,7 +11,6 @@
 
         <Label
             Margin="20"
-            SemanticProperties.HeadingLevel="Level1"
             Style="{StaticResource Headline}"
             Text="Sonnig bis Wolkig" />
 
@@ -21,10 +20,7 @@
             SemanticProperties.Description="dot net bot in a race car number eight"
             Source="son_wol.png" />
 
-        <Label
-            SemanticProperties.HeadingLevel="Level1"
-            Style="{StaticResource Headline}"
-            Text="12°" />
+        <Label Style="{StaticResource Headline}" Text="12°" />
 
         <Label Style="{StaticResource SubHeadline}" Text="Welcome to my Weather" />
 
