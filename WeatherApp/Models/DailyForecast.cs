@@ -11,8 +11,8 @@ namespace WeatherApp.Models
 {
     public class DailyForecast : NotifyPropertyHelper
     {
-        private float _maxTemperatur = 12;
-        private float _minTemperatur = 6;
+        private float _maxTemperatur = 0;
+        private float _minTemperatur = 0;
 
         private Weekday _day;
         private string _weekday = string.Empty;

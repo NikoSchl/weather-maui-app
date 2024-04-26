@@ -13,6 +13,7 @@
 
     <ContentPage.Resources>
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
+        <converters:MaxTemperaturToImageSourceConverter x:Key="maxTemperaturToImageSourceConverter" />
     </ContentPage.Resources>
 
     <StackLayout Padding="20">
@@ -60,7 +61,7 @@
 
                         <Image
                             Grid.Row="5"
-                            Source="thermometer_kalt.png"
+                            Source="{Binding MaxTemperatur, Converter={StaticResource maxTemperaturToImageSourceConverter}}"
                             VerticalOptions="Start"
                             WidthRequest="60" />
 
