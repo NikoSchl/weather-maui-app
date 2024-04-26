@@ -10,11 +10,11 @@ namespace WeatherApp.Converters
 {
     internal class WeatherConditionToImageSourceConvert : IValueConverter
     {
-        private static readonly ImageSource _imageSunny = ImageSource.FromFile("son_wol.png");
-        private static readonly ImageSource _imageRain = ImageSource.FromFile("sun_two.png");
-        private static readonly ImageSource _imageCloudy = ImageSource.FromFile("son_wol.png");
-        private static readonly ImageSource _imageStorm = ImageSource.FromFile("son_wol.png");
-        private static readonly ImageSource _imageSnow = ImageSource.FromFile("son_wol.png");
+        private static readonly ImageSource _imageSunny = ImageSource.FromFile("sunny_sun.png");
+        private static readonly ImageSource _imageRain = ImageSource.FromFile("rain_cloud.png");
+        private static readonly ImageSource _imageCloudy = ImageSource.FromFile("cloudy.png");
+        private static readonly ImageSource _imageSunCloud = ImageSource.FromFile("sunny_cloud.png");
+        private static readonly ImageSource _imageSnow = ImageSource.FromFile("snow_rain.png");
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
@@ -28,13 +28,12 @@ namespace WeatherApp.Converters
                     return _imageRain;
                 case WeatherCondition.cloudy:
                     return _imageCloudy;
-                case WeatherCondition.storm:
-                    return _imageStorm;
+                case WeatherCondition.suncloud:
+                    return _imageSunCloud;
                 case WeatherCondition.snow:
                     return _imageSnow;
-                default: 
+                default:
                     return _imageSunny;
-
             }
         }
 

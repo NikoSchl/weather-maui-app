@@ -8,13 +8,13 @@ namespace WeatherApp.Collections
 {
     public enum Winddirection
     {
-        N,
-        NO,
-        O,
-        SO,
-        S,
-        SW,
-        W,
-        NW
+        north,
+        northeast,
+        east,
+        southeast,
+        south,
+        southwest,
+        west,
+        northwest
     }
 }

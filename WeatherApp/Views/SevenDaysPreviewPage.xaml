@@ -4,11 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:collections="clr-namespace:WeatherApp.Collections"
+    xmlns:converters="clr-namespace:WeatherApp.Converters"
     xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="7 Days Preview"
     x:DataType="viewModels:SevenDayViewModel">
+
+    <ContentPage.Resources>
+        <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
+    </ContentPage.Resources>
 
     <StackLayout Padding="20">
         <Label
@@ -27,7 +32,8 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DailyForecast">
                     <Grid
-                        BackgroundColor="LightGrey"
+                        BackgroundColor="AliceBlue"
+                        ColumnSpacing="30"
                         HeightRequest="450"
                         HorizontalOptions="Center"
                         RowDefinitions=".15*,.15*,.15*,.10*,.15*,.15*,.15*"
@@ -37,24 +43,28 @@
 
                         <Label
                             Grid.Row="1"
-                            Text="{Binding MaxTemperatur}"
-                            WidthRequest="20" />
+                            Text="{Binding MaxTemperatur, StringFormat='{0}°'}"
+                            VerticalTextAlignment="Center" />
 
                         <Image
                             Grid.Row="2"
-                            Source="son_wol.png"
+                            Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}"
                             VerticalOptions="Start" />
 
-                        <Label Grid.Row="3" BackgroundColor="White" />
+                        <Label Grid.Row="3" />
 
                         <Label
                             Grid.Row="4"
-                            Text="{Binding MaxTemperatur}"
+                            Text="{Binding MaxTemperatur, StringFormat='{0}°'}"
                             VerticalTextAlignment="Center" />
 
-                        <Image Grid.Row="5" Source="son_wol.png" />
+                        <Image
+                            Grid.Row="5"
+                            Source="thermometer_kalt.png"
+                            VerticalOptions="Start"
+                            WidthRequest="60" />
 
-                        <Label Grid.Row="6" Text="{Binding MinTemperatur}" />
+                        <Label Grid.Row="6" Text="{Binding MinTemperatur, StringFormat='{0}°'}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

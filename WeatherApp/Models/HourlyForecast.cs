@@ -15,6 +15,8 @@ namespace WeatherApp.Models
         // für die Uhrzeit/Stunde und fürs Datum
         private DateTime _date = DateTime.UtcNow;
 
+        private int _intHour = 0;
+
         private WeatherCondition _condition;
 
        
@@ -45,6 +47,16 @@ namespace WeatherApp.Models
             {
                 _condition = value;
                 OnPropertyChanged(nameof(Condition));
+            }
+        }
+
+        public int IntHour
+        {
+            get { return _intHour; }
+            set
+            {
+                _intHour = value;
+                OnPropertyChanged(nameof(IntHour));
             }
         }
     }

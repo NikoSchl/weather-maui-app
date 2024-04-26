@@ -15,13 +15,14 @@ namespace WeatherApp.Models
         private float _minTemperatur = 6;
 
         private Weekday _day;
+        private WeatherCondition _condition;
 
         public float MaxTemperatur 
-        { 
+        {
             get
             {
                 return _maxTemperatur;
-            } 
+            }
             set
             {
                 _maxTemperatur = value;
@@ -55,5 +56,14 @@ namespace WeatherApp.Models
             }
         }
 
+        public WeatherCondition Condition
+        {
+            get { return _condition; }
+            set
+            {
+                _condition = value;
+                OnPropertyChanged(nameof(Condition));
+            }
+        }
     }
 }

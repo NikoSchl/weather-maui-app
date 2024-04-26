@@ -11,10 +11,14 @@ namespace WeatherApp.ViewModels
 {
     public class MainViewModel
     {
+        Random Random { get; set; } = new Random();
+
         public HourlyForecast HourlyForecast { get; } = new HourlyForecast();
 
         public MainViewModel()
         {
+            WindForecast windForecast = new WindForecast();
+            windForecast.Windspeed = Random.Next(1, 80);
         }
     }
 }

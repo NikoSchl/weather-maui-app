@@ -12,6 +12,6 @@ namespace WeatherApp.Collections
         rain,
         cloudy,
         snow,
-        storm
+        suncloud
     }
 }

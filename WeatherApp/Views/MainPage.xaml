@@ -10,6 +10,10 @@
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     x:DataType="viewModels:MainViewModel">
 
+    <ContentPage.Resources>
+        <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
+    </ContentPage.Resources>
+
     <StackLayout Padding="30,0" Spacing="25">
 
         <Label
@@ -17,7 +21,7 @@
             Style="{StaticResource Headline}"
             Text="Sonnig bis Wolkig" />
 
-        <Label Text="{Binding HourlyForecast.Date}" />
+        <Label Text="{Binding HourlyForecast.Date, StringFormat='{0:d}'}" />
 
         <Image
             Aspect="AspectFit"
@@ -25,6 +29,11 @@
             Source="son_wol.png" />
 
         <Label Style="{StaticResource Headline}" Text="{Binding HourlyForecast.Temperatur}" />
+
+        <Image
+            x:DataType="models:WindForecast"
+            Source="{Binding WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
+            WidthRequest="20" />
 
         <Label Style="{StaticResource SubHeadline}" Text="Welcome to my Weather" />
 
