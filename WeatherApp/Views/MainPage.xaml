@@ -24,7 +24,8 @@
         <Label
             Margin="20,20,20,0"
             Style="{StaticResource Headline}"
-            Text="Sonnig" />
+            Text="{Binding HourlyForecast.Condition}"
+            TextTransform="Uppercase" />
 
         <Label FontSize="20" Text="{Binding HourlyForecast.Date, StringFormat='{0:d}'}" />
 

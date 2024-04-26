@@ -19,6 +19,7 @@ namespace WeatherApp.Models
 
         private WeatherCondition _condition;
 
+
        
         public float Temperatur
         {
@@ -45,8 +46,11 @@ namespace WeatherApp.Models
             get { return _condition; }
             set
             {
-                _condition = value;
-                OnPropertyChanged(nameof(Condition));
+                if (_condition != value)
+                {
+                    _condition = value;
+                    OnPropertyChanged(nameof(Condition));
+                }
             }
         }
 
