@@ -12,30 +12,32 @@
 
     <ContentPage.Resources>
         <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
+        <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
 
-    <StackLayout Padding="30,0" Spacing="25">
+    <StackLayout
+        Margin="20,0,20,20"
+        Padding="30,0"
+        BackgroundColor="AliceBlue"
+        Spacing="25">
 
         <Label
-            Margin="20"
+            Margin="20,20,20,0"
             Style="{StaticResource Headline}"
-            Text="Sonnig bis Wolkig" />
+            Text="Sonnig" />
 
-        <Label Text="{Binding HourlyForecast.Date, StringFormat='{0:d}'}" />
+        <Label FontSize="20" Text="{Binding HourlyForecast.Date, StringFormat='{0:d}'}" />
 
         <Image
             Aspect="AspectFit"
             HeightRequest="185"
-            Source="son_wol.png" />
+            Source="{Binding HourlyForecast.Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
 
-        <Label Style="{StaticResource Headline}" Text="{Binding HourlyForecast.Temperatur}" />
+        <Label Style="{StaticResource Headline}" Text="{Binding HourlyForecast.Temperatur, StringFormat='{0}°'}" />
 
-        <Image
-            x:DataType="models:WindForecast"
-            Source="{Binding WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
-            WidthRequest="20" />
+        <Image Source="{Binding windForecast.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}" WidthRequest="80" />
 
-        <Label Style="{StaticResource SubHeadline}" Text="Welcome to my Weather" />
+        <Label Style="{StaticResource SubHeadline}" Text="{Binding windForecast.Windspeed, StringFormat='{0} km/h'}" />
 
 
     </StackLayout>
