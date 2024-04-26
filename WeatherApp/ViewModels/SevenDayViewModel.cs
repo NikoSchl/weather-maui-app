@@ -24,6 +24,9 @@ namespace WeatherApp.ViewModels
 
         private void GenerateRandomDataForDailyForecast()
         {
+            DateTime dateValue = DateTime.Now;
+            int dayOfWeekNumber = (int)dateValue.DayOfWeek;
+
             for (int i = 0; i < 7; i++)
             {
                 DailyForecast dailyForecast = new DailyForecast();
@@ -67,6 +70,36 @@ namespace WeatherApp.ViewModels
                 {
                     dailyForecast.MaxTemperatur = two;
                     dailyForecast.MinTemperatur = one;
+                }
+
+
+                switch (dayOfWeekNumber)
+                {
+                    case 0:
+                        dailyForecast.Weekday = "Sun"; break;
+                    case 1:
+                        dailyForecast.Weekday = "Mon"; break;
+                    case 2:
+                        dailyForecast.Weekday = "Tue"; break;
+                    case 3:
+                        dailyForecast.Weekday = "Wed"; break;
+                    case 4:
+                        dailyForecast.Weekday = "Thu"; break;
+                    case 5:
+                        dailyForecast.Weekday = "Fri"; break;
+                    case 6:
+                        dailyForecast.Weekday = "Sat"; break;
+                    default:
+                        dailyForecast.Weekday = "Sun"; break;
+                }
+
+                if(dayOfWeekNumber == 6)
+                {
+                    dayOfWeekNumber = 0;
+                }
+                else
+                {
+                    dayOfWeekNumber = dayOfWeekNumber + 1;
                 }
 
                 DailyForecasts.Add(dailyForecast);
