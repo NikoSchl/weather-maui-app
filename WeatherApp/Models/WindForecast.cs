@@ -47,6 +47,7 @@ namespace WeatherApp.Models
         }
 
 
+
         public static WindForecast GenerateWindForecast()
         {
             var windForecast = new WindForecast();

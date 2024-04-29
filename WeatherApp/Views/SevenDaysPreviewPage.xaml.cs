@@ -6,11 +6,12 @@ public partial class SevenDaysPreviewPage : ContentPage
 {
     private const string TodayDetailPageRouteBase = $"{nameof(TodayDetailPage)}";
 
-    private readonly SevenDayViewModel _viewModel = new SevenDayViewModel();
+    private readonly SevenDayViewModel _viewModel;
 	public SevenDaysPreviewPage()
 	{
 		InitializeComponent();
-		BindingContext = _viewModel;
+        _viewModel = new SevenDayViewModel();
+        BindingContext = _viewModel;
 	}
 
     private async void Button_Clicked(object sender, EventArgs e)

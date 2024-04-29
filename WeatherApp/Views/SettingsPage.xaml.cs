@@ -4,11 +4,12 @@ namespace WeatherApp.Views;
 
 public partial class SettingsPage : ContentPage
 {
-    private readonly SettingsViewModel _viewModel = new SettingsViewModel();
+    private readonly SettingsViewModel _viewModel;
 
     public SettingsPage()
 	{
 		InitializeComponent();
-		BindingContext = _viewModel;
+        _viewModel = new SettingsViewModel();
+        BindingContext = _viewModel;
 	}
 }

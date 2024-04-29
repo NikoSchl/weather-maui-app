@@ -4,10 +4,11 @@ namespace WeatherApp.Views;
 
 public partial class TwentyFourHourPage : ContentPage
 {
-	private readonly TwentyFourHourViewModel _viewModel = new TwentyFourHourViewModel();
+	private readonly TwentyFourHourViewModel _viewModel;
 	public TwentyFourHourPage()
 	{
 		InitializeComponent();
-		BindingContext = _viewModel;
+        _viewModel = new TwentyFourHourViewModel();
+        BindingContext = _viewModel;
 	}
 }

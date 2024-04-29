@@ -4,10 +4,11 @@ namespace WeatherApp.Views;
 
 public partial class TodayDetailPage : ContentPage
 {
-	private readonly TodayDetailViewModel _viewModel = new TodayDetailViewModel();
+	private readonly TodayDetailViewModel _viewModel;
 	public TodayDetailPage()
 	{
 		InitializeComponent();
-		BindingContext = _viewModel;
+        _viewModel = new TodayDetailViewModel();
+        BindingContext = _viewModel;
 	}
 }
