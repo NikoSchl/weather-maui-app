@@ -15,7 +15,7 @@ namespace WeatherApp.ViewModels
     public class MainViewModel
     {
         // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
-        public HourlyForecast HourlyForecast { get; } = HourlyForecast.GenerateHourlyForecast();
+        public HourlyForecast HourlyForecast { get; } = HourlyForecast.GenerateHourlyForecastForMainPage();
 
         // Objekt mit den Eigenschaften (Windspeed und enum Winddirection)
         public WindForecast WindForecast { get; } = WindForecast.GenerateWindForecast();

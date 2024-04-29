@@ -87,7 +87,7 @@ namespace WeatherApp.Models
 
         // Generiert eine Instanz für die MainPage mit den Eigenschaften Temperatur und WeatherCondition
         // <returns>gefüllte Instanz
-        public static HourlyForecast GenerateHourlyForecast()
+        public static HourlyForecast GenerateHourlyForecastForMainPage()
         {
             // Instanz wird erstellt
             var hourlyForecast = new HourlyForecast();

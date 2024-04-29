@@ -61,7 +61,7 @@ namespace WeatherApp.Models
         }
 
 
-        private static WeatherCondition GetRandomWeatherConditionShort()
+        public static WeatherCondition GetRandomWeatherConditionShort()
         {
             switch (_random.Next(1, 6))
             {
@@ -81,7 +81,7 @@ namespace WeatherApp.Models
         }
 
 
-        private static WeatherCondition GetRandomWeatherConditionLong(int currenthour)
+        public static WeatherCondition GetRandomWeatherConditionLong(int currenthour)
         {
             var weatherConditionModel = new WeatherConditionModel();
             weatherConditionModel.Sunrise = 5;
