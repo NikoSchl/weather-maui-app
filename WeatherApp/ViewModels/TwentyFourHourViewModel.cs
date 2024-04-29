@@ -74,12 +74,6 @@ namespace WeatherApp.ViewModels
 
         private void GenerateImageForHourlyWeatherCondition(int hour)
         {
-            // Zufallszahl zwischen 1 und 5 da das enum WeatherCondition aus 5 Werten besteht
-
-            int randomForWeatherCondition = Random.Next(1, 7);
-            int randomForNightWeatherCondition = Random.Next(1, 4);
-
-
             weatherConditionModel.Sunrise = 5;
             weatherConditionModel.Sunset = 20;
 
@@ -94,7 +88,7 @@ namespace WeatherApp.ViewModels
             }
             else if (hour < weatherConditionModel.Sunrise || hour > weatherConditionModel.Sunset)
             {
-                switch (randomForNightWeatherCondition)
+                switch (Random.Next(1, 4))
                 {
                     case 1:
                         condition = WeatherCondition.moon;
@@ -115,7 +109,7 @@ namespace WeatherApp.ViewModels
                 // im switch wird die Zufallszahl (Variable randomForWeatherCondition) geprüft/ 
                 // verglichen und der definierte enum-Wert in die Variable condition gespeichert
 
-                switch (randomForWeatherCondition)
+                switch (Random.Next(1, 7))
                 {
                     case 1:
                         condition = WeatherCondition.sunny;

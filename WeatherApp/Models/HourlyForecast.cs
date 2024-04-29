@@ -85,6 +85,8 @@ namespace WeatherApp.Models
         }
 
 
+        // Generiert eine Instanz für die MainPage mit den Eigenschaften Temperatur und WeatherCondition
+        // <returns>gefüllte Instanz
         public static HourlyForecast GenerateHourlyForecast()
         {
             // Instanz wird erstellt
@@ -93,10 +95,13 @@ namespace WeatherApp.Models
             hourlyForecast.Temperatur = _random.Next(-10, 30);
             // für die Condition wird die Methode aufgerufen, welche aus dem enum ein Zufallswert generiert
             hourlyForecast.Condition = GetRandomWeatherCondition();
+            // gibt die gefüllte Instanz zurück
             return hourlyForecast;
         }
 
 
+       // ermittelt einen Wert aus dem enum WeatherCondition für die Weiterverarbeitung im UI
+       // um das passende Bild anzuzeigen
         private static WeatherCondition GetRandomWeatherCondition()
         {
             switch (_random.Next(1, 6))

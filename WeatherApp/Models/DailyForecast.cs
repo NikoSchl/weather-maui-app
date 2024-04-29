@@ -11,10 +11,10 @@ namespace WeatherApp.Models
 {
     public class DailyForecast : WeatherConditionModel
     {
+        private static readonly Random _random = new Random();
+
         private float _maxTemperatur = 0;
         private float _minTemperatur = 0;
-
-        private static readonly Random _random = new Random();
 
 
         // enums für die Wochentage (Sunday, Monday, ...)
@@ -80,10 +80,32 @@ namespace WeatherApp.Models
         }
 
 
-        //private static DailyForecast GenerateDailyForecast()
-        //{
+        private static DailyForecast GenerateDailyForecast()
+        {
+            var dailyForecast = new DailyForecast();
+            dailyForecast.Condition = GetRandomWeatherCondition();
+            return dailyForecast;
+        }
 
-        //}
+        private static WeatherCondition GetRandomWeatherCondition()
+        {
+            switch (_random.Next(1, 6))
+            {
+                case 1:
+                    return WeatherCondition.sunny;
+                case 2:
+                    return WeatherCondition.rain;
+                case 3:
+                    return WeatherCondition.suncloud;
+                case 4:
+                    return WeatherCondition.snow;
+                case 5:
+                    return WeatherCondition.cloudy;
+                default:
+                    return WeatherCondition.sunny;
+            }
+        }
+
 
 
 

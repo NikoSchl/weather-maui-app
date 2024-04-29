@@ -32,7 +32,8 @@ namespace WeatherApp.ViewModels
 
             GenerateRandomDataForDailyForecast();
 
-            //for(int i = 0; i < 24; i++)
+
+            //for(int i = 0; i < 7; i++)
             //{
             //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
             //}
@@ -81,6 +82,7 @@ namespace WeatherApp.ViewModels
                 // TODO: Converter (WeekdayToStringConverter) um die string (Sun, Mon,...) durch
                 // das enum zu ersetzen
 
+                // TODO: rüber ins Model DailyForecast
                 // Die Zahl des heutigen Wochentages wird geprüft und der entsprechende string in
                 // die Objekt-Variable Weekday gespeichert
 
@@ -139,15 +141,10 @@ namespace WeatherApp.ViewModels
 
         private void GenerateWeatherCondition(DailyForecast dailyForecast)
         {
-            // Zufallszahl für den switch
-
-            int randomForWeatherCondition = Random.Next(1, 6);
-
-
             // im switch wird die Variable randomForWeatherCondition geprüft/ verglichen
             // und der dahinterliegende enum-Wert in die Objekt-Variable Condition gespeichert
 
-            switch (randomForWeatherCondition)
+            switch (Random.Next(1, 6))
             {
                 case 1:
                     dailyForecast.Condition = WeatherCondition.sunny;
