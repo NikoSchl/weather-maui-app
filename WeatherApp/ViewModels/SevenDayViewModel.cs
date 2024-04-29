@@ -20,11 +20,21 @@ namespace WeatherApp.ViewModels
         // TODO: Provisionally as a checker for the display in the UI, it is replaced by real data
         Random Random = new Random();
 
+        public Command NavigateToDetailPageCommand { get; }
+
 
 
         public SevenDayViewModel()
         {
             GenerateRandomDataForDailyForecast();
+
+            NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
+        }
+
+
+        private async void NavigateToDetailPage()
+        {
+            await AppShell.Current.GoToAsync(AppShell.CreateDetailPageRoute);
         }
 
 

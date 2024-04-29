@@ -7,11 +7,11 @@
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="TodayDetailPage"
     x:DataType="viewModels:TodayDetailViewModel">
-    <VerticalStackLayout>
+    <StackLayout Style="{StaticResource _layout}">
         <Label
             HorizontalOptions="Center"
-            Text="Herzlichen Glückwunsch, Sie haben die Today Detail Page erreicht!"
+            Text="Herzlichen Glückwunsch, Sie haben die Today Detail Page erreicht! Still at Work!"
             VerticalOptions="Center" />
 
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

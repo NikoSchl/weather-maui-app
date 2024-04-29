@@ -131,8 +131,10 @@
         <Button
             Margin="20"
             BackgroundColor="Navy"
+            Command="{Binding NavigateToDetailPageCommand}"
             CornerRadius="0"
             FontSize="20"
+            HeightRequest="10"
             Opacity="0.8"
             Text="next Day Detail"
             WidthRequest="310" />
