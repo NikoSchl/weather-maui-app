@@ -10,6 +10,7 @@ namespace WeatherApp.Models
 {
     public class WindForecast : NotifyPropertyHelper
     {
+        private static readonly Random _random = new Random();
         private float _windSpeed = 0;
 
         // enum für die acht möglichen Windrichtungen
@@ -43,6 +44,40 @@ namespace WeatherApp.Models
                     OnPropertyChanged(nameof(WindDirection));
                 }
             }
+        }
+
+
+        public static WindForecast GenerateWindForecast()
+        {
+            var windForecast = new WindForecast();
+            windForecast.Windspeed = _random.Next(1, 80);
+            windForecast.WindDirection = GetRandomWindDirection();
+            return windForecast;
+        }
+
+        private static Winddirection GetRandomWindDirection()
+        {
+            switch (_random.Next(1, 9))
+            {
+                case 1:
+                    return Winddirection.east;
+                case 2:
+                    return Winddirection.north; 
+                case 3:
+                    return Winddirection.south; 
+                case 4:
+                    return Winddirection.west; 
+                case 5:
+                    return Winddirection.northeast; 
+                case 6:
+                    return Winddirection.southeast; 
+                case 7:
+                    return Winddirection.northwest; 
+                case 8:
+                    return Winddirection.southwest; 
+                default:
+                    return Winddirection.north; 
+            }  
         }
     }
 }

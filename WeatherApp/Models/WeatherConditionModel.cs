@@ -10,6 +10,8 @@ namespace WeatherApp.Models
 {
     public class WeatherConditionModel : NotifyPropertyHelper
     {
+        private static readonly Random _random = new Random();
+
         private WeatherCondition _condition;
 
         private int _sunrise = 0;
@@ -58,7 +60,24 @@ namespace WeatherApp.Models
         }
 
 
-
+        private static WeatherCondition GetRandomWeatherCondition()
+        {
+            switch (_random.Next(1, 6))
+            {
+                case 1:
+                    return WeatherCondition.sunny;
+                case 2:
+                    return WeatherCondition.rain;
+                case 3:
+                    return WeatherCondition.suncloud;
+                case 4:
+                    return WeatherCondition.snow;
+                case 5:
+                    return WeatherCondition.cloudy;
+                default:
+                    return WeatherCondition.sunny;
+            }
+        }
 
 
     }

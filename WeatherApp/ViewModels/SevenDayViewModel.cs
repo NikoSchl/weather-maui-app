@@ -26,9 +26,16 @@ namespace WeatherApp.ViewModels
 
         public SevenDayViewModel()
         {
-            GenerateRandomDataForDailyForecast();
+            //GenerateRandomDataForDailyForecast();
 
             NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
+
+            GenerateRandomDataForDailyForecast();
+
+            //for(int i = 0; i < 24; i++)
+            //{
+            //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
+            //}
         }
 
 

@@ -14,7 +14,7 @@ namespace WeatherApp.Models
         private float _maxTemperatur = 0;
         private float _minTemperatur = 0;
 
-        private Random Random = new Random();
+        private static readonly Random _random = new Random();
 
 
         // enums für die Wochentage (Sunday, Monday, ...)
@@ -80,6 +80,10 @@ namespace WeatherApp.Models
         }
 
 
+        //private static DailyForecast GenerateDailyForecast()
+        //{
+
+        //}
 
 
 

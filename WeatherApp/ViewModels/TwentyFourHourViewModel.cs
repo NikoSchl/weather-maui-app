@@ -117,10 +117,6 @@ namespace WeatherApp.ViewModels
 
                 switch (randomForWeatherCondition)
                 {
-                    // erster Fall(case) ist identisch mit:
-                    // if(randomForWeatherCondition == 1)
-                    // { condition = WeatherCondition.sunny; }
-
                     case 1:
                         condition = WeatherCondition.sunny;
                         break;

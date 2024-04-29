@@ -10,6 +10,8 @@ namespace WeatherApp.Models
 {
     public class HourlyForecast : WeatherConditionModel
     {
+        private static readonly Random _random = new Random();
+
         private float _temperatur = 25;
 
         // für die Uhrzeit/Stunde und fürs Datum
@@ -83,6 +85,35 @@ namespace WeatherApp.Models
         }
 
 
+        public static HourlyForecast GenerateHourlyForecast()
+        {
+            // Instanz wird erstellt
+            var hourlyForecast = new HourlyForecast();
+            // Temperatur wird mit einem Zufallswert erstellt
+            hourlyForecast.Temperatur = _random.Next(-10, 30);
+            // für die Condition wird die Methode aufgerufen, welche aus dem enum ein Zufallswert generiert
+            hourlyForecast.Condition = GetRandomWeatherCondition();
+            return hourlyForecast;
+        }
 
+
+        private static WeatherCondition GetRandomWeatherCondition()
+        {
+            switch (_random.Next(1, 6))
+            {
+                case 1:
+                    return WeatherCondition.sunny;
+                case 2:
+                    return WeatherCondition.rain;
+                case 3:
+                    return WeatherCondition.suncloud;
+                case 4:
+                    return WeatherCondition.snow;
+                case 5:
+                    return WeatherCondition.cloudy;
+                default:
+                    return WeatherCondition.sunny;
+            }
+        }
     }
 }

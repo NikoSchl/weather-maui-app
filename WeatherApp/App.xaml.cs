@@ -1,4 +1,6 @@
-﻿namespace WeatherApp
+﻿using System.Diagnostics;
+
+namespace WeatherApp
 {
     public partial class App : Application
     {
