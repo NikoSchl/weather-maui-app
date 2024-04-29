@@ -9,76 +9,79 @@ using WeatherApp.Collections;
 
 namespace WeatherApp.Models
 {
-    public class DailyForecast : NotifyPropertyHelper
+    public class DailyForecast : WeatherConditionModel
     {
         private float _maxTemperatur = 0;
         private float _minTemperatur = 0;
 
-        private Weekday _day;
-        private string _weekday = string.Empty;
-        private WeatherCondition _condition;
+        private Random Random = new Random();
 
-        public float MaxTemperatur 
+
+        // enums für die Wochentage (Sunday, Monday, ...)
+
+        private Weekday _day;
+
+        private string _weekday = string.Empty;
+
+
+        public float MaxTemperatur
         {
-            get
-            {
-                return _maxTemperatur;
-            }
+            get { return _maxTemperatur; }
             set
             {
-                _maxTemperatur = value;
-                OnPropertyChanged(nameof(MaxTemperatur));
+                // Damit nicht unnötig oft das UI aktuallisiert wird, eine if Abfrage
+                // ob eine Veränderung vorliegt, wenn nicht, muss nicht erneuert werden
+
+                if (_maxTemperatur != value)
+                {
+                    _maxTemperatur = value;
+                    OnPropertyChanged(nameof(MaxTemperatur));
+                }
             }
         }
 
         public float MinTemperatur
         {
-            get
-            {
-                return _minTemperatur;
-            }
+            get { return _minTemperatur; }
             set
             {
-                _minTemperatur = value;
-                OnPropertyChanged(nameof(MinTemperatur));
+                if (_minTemperatur != value)
+                {
+                    _minTemperatur = value;
+                    OnPropertyChanged(nameof(MinTemperatur));
+                }
             }
         }
 
         public Weekday Day
         {
-            get
-            {
-                return _day;
-            }
+            get { return _day; }
             set
             {
-                _day = value;
-                OnPropertyChanged(nameof(Day));
-            }
-        }
-
-        public WeatherCondition Condition
-        {
-            get { return _condition; }
-            set
-            {
-                _condition = value;
-                OnPropertyChanged(nameof(Condition));
+                if (_day != value)
+                {
+                    _day = value;
+                    OnPropertyChanged(nameof(Day));
+                }
             }
         }
 
         public string Weekday
         {
-            get
-            {
-                return _weekday;
-            }
+            get { return _weekday; }
             set
             {
-                _weekday = value;
-                OnPropertyChanged(nameof(Weekday));
-
+                if (_weekday != value)
+                {
+                    _weekday = value;
+                    OnPropertyChanged(nameof(Weekday));
+                }
             }
         }
+
+
+
+
+
     }
 }

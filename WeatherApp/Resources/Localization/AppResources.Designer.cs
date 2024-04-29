@@ -61,15 +61,6 @@ namespace WeatherApp.Resources.Localization {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fri ähnelt.
-        /// </summary>
-        internal static string Friday {
-            get {
-                return ResourceManager.GetString("Friday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 24 hour ähnelt.
         /// </summary>
         internal static string label_24hPreview {
@@ -79,11 +70,20 @@ namespace WeatherApp.Resources.Localization {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die 7 day ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die 7 Days ähnelt.
         /// </summary>
         internal static string label_7DayPreview {
             get {
                 return ResourceManager.GetString("label_7DayPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hourly Forecast ähnelt.
+        /// </summary>
+        internal static string label_Headline_Hourly {
+            get {
+                return ResourceManager.GetString("label_Headline_Hourly", resourceCulture);
             }
         }
         
@@ -106,56 +106,11 @@ namespace WeatherApp.Resources.Localization {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Mon ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
         /// </summary>
-        internal static string Monday {
+        internal static string String1 {
             get {
-                return ResourceManager.GetString("Monday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Sat ähnelt.
-        /// </summary>
-        internal static string Saturday {
-            get {
-                return ResourceManager.GetString("Saturday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Sun ähnelt.
-        /// </summary>
-        internal static string Sunday {
-            get {
-                return ResourceManager.GetString("Sunday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Thu ähnelt.
-        /// </summary>
-        internal static string Thursday {
-            get {
-                return ResourceManager.GetString("Thursday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Tue ähnelt.
-        /// </summary>
-        internal static string Tuesday {
-            get {
-                return ResourceManager.GetString("Tuesday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wed ähnelt.
-        /// </summary>
-        internal static string Wednesday {
-            get {
-                return ResourceManager.GetString("Wednesday", resourceCulture);
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

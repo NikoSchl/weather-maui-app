@@ -11,19 +11,21 @@ namespace WeatherApp.Models
     public class WindForecast : NotifyPropertyHelper
     {
         private float _windSpeed = 0;
+
+        // enum für die acht möglichen Windrichtungen
         private Winddirection _windDirection;
+
 
         public float Windspeed
         {
-            get
-            {
-                return _windSpeed;
-            }
+            get { return _windSpeed; }
             set
             {
-                _windSpeed = value;
-                OnPropertyChanged(nameof(Windspeed));
-
+                if (_windSpeed != value)
+                {
+                    _windSpeed = value;
+                    OnPropertyChanged(nameof(Windspeed));
+                }
             }
         }
 
@@ -35,8 +37,11 @@ namespace WeatherApp.Models
             }
             set
             {
-                _windDirection = value;
-                OnPropertyChanged(nameof(WindDirection));
+                if (_windDirection != value)
+                {
+                    _windDirection = value;
+                    OnPropertyChanged(nameof(WindDirection));
+                }
             }
         }
     }

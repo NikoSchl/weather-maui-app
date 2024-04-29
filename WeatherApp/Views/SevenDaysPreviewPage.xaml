@@ -5,76 +5,127 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:collections="clr-namespace:WeatherApp.Collections"
     xmlns:converters="clr-namespace:WeatherApp.Converters"
-    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:helpers="clr-namespace:WeatherApp.Helpers"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
-    Title="7 Days Preview"
-    x:DataType="viewModels:SevenDayViewModel">
+    Title="Daily Forecast"
+    x:DataType="viewModels:SevenDayViewModel"
+    BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
         <converters:MaxTemperaturToImageSourceConverter x:Key="maxTemperaturToImageSourceConverter" />
     </ContentPage.Resources>
 
-    <StackLayout Padding="20">
-        <Label
-            HorizontalOptions="Center"
-            Text="Daily Forecasts"
-            VerticalOptions="Center" />
 
+    <!--  Beginn des sichtbaren Bereichs  -->
+    <StackLayout Padding="20,55,20,40">
+
+        <!--
+            Horizontallaufende Liste, welche die Liste ObservableCollection {Binding DailyForecasts}
+            einliest und sich auf die class DailyForecast bezieht x:DataType="models:DailyForecast"
+        -->
         <CollectionView
             x:Name="_dailyForecasts"
             HorizontalOptions="Center"
             ItemsSource="{Binding DailyForecasts}"
             VerticalOptions="Center">
+
+            <!--  Definiert den Verlauf und den Zwischenraum der Zellen  -->
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
             </CollectionView.ItemsLayout>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DailyForecast">
+
                     <Grid
                         BackgroundColor="AliceBlue"
-                        ColumnSpacing="30"
-                        HeightRequest="450"
+                        ColumnSpacing="20"
+                        HeightRequest="470"
                         HorizontalOptions="Center"
-                        RowDefinitions=".15*,.15*,.15*,.10*,.15*,.15*,.15*"
+                        Opacity="0.8"
+                        RowDefinitions=".10*,.30*,.15*,.10*,.10*,.15*,.10*"
                         VerticalOptions="Center">
 
-                        <Label Grid.Row="0" Text="{Binding Weekday}" />
-
+                        <!--  Weekday  -->
                         <Label
-                            Grid.Row="1"
-                            Text="{Binding MaxTemperatur, StringFormat='{0}°'}"
-                            VerticalTextAlignment="Center" />
+                            x:Name="_weekday"
+                            Grid.Row="0"
+                            Padding="0,10,0,0"
+                            FontSize="36"
+                            Style="{StaticResource _headline}"
+                            Text="{Binding Weekday}"
+                            WidthRequest="120">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference _weekday}, Path=Text}"
+                                    TargetType="Label"
+                                    Value="Sun">
+                                    <Setter Property="BackgroundColor" Value="DarkRed" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
 
+                        <!--  WeatherCondition Image  -->
                         <Image
-                            Grid.Row="2"
+                            Grid.Row="1"
+                            Margin="0,20,0,0"
+                            HorizontalOptions="Center"
                             Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}"
-                            VerticalOptions="Start" />
+                            WidthRequest="90" />
 
-                        <Label Grid.Row="3" />
+                        <!--  max Temperatur  -->
+                        <Label
+                            Grid.Row="2"
+                            Margin="0,0,0,-13"
+                            FontSize="50"
+                            HorizontalTextAlignment="End"
+                            Text="{Binding MaxTemperatur, StringFormat='{0}°'}"
+                            TextColor="CornflowerBlue"
+                            VerticalTextAlignment="End" />
 
+                        <!--  WeatherCondition Text  -->
+                        <Label
+                            Grid.Row="3"
+                            Margin="0,0,0,5"
+                            BackgroundColor="CornflowerBlue"
+                            FontSize="17"
+                            Text="{Binding Condition}"
+                            TextColor="AliceBlue"
+                            TextTransform="Uppercase" />
+
+                        <!--  //////////////////////////////////////  -->
+
+                        <!--  max Temperatur  -->
                         <Label
                             Grid.Row="4"
+                            Margin="0,5,10,5"
+                            HorizontalTextAlignment="End"
+                            Style="{StaticResource _minmaxhour}"
                             Text="{Binding MaxTemperatur, StringFormat='{0}°'}"
-                            VerticalTextAlignment="Center" />
+                            VerticalTextAlignment="End" />
 
+                        <!--  Thermometer  -->
                         <Image
                             Grid.Row="5"
-                            Source="{Binding MaxTemperatur, Converter={StaticResource maxTemperaturToImageSourceConverter}}"
-                            VerticalOptions="Start"
-                            WidthRequest="60" />
+                            HeightRequest="80"
+                            Source="{Binding MaxTemperatur, Converter={StaticResource maxTemperaturToImageSourceConverter}}" />
 
-                        <Label Grid.Row="6" Text="{Binding MinTemperatur, StringFormat='{0}°'}" />
+                        <!--  min Temperatur  -->
+                        <Label
+                            Grid.Row="6"
+                            Margin="13,-15,0,0"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource _minmaxhour}"
+                            Text="{Binding MinTemperatur, StringFormat='{0}°'}"
+                            VerticalTextAlignment="Start" />
+
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Label
-            HorizontalOptions="Center"
-            Text="min/max Temperatur"
-            VerticalOptions="Center" />
 
     </StackLayout>
 </ContentPage>

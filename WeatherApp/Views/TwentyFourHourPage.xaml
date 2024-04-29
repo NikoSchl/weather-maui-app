@@ -3,43 +3,72 @@
     x:Class="WeatherApp.Views.TwentyFourHourPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:collections="clr-namespace:WeatherApp.Collections"
     xmlns:converters="clr-namespace:WeatherApp.Converters"
-    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:helpers="clr-namespace:WeatherApp.Helpers"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
-    Title="24 Hour Preview"
-    x:DataType="viewModels:TwentyFourHourViewModel">
+    Title="Hourly Forecast"
+    x:DataType="viewModels:TwentyFourHourViewModel"
+    BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
 
-    <StackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="24 h Preview"
-            VerticalOptions="Center" />
+    <!--
+        Beginn des sichtbaren Bereichs, Opacity ist die Transparenz
+        Die ganzen Daten im Stacklayout, wo Scrollfunktion integriert ist
+    -->
+    <StackLayout
+        Margin="40"
+        HeightRequest="490"
+        Opacity="0.8"
+        WidthRequest="310">
 
-        <ListView
-            x:Name="_hourlyForecast"
-            Margin="20"
-            ItemsSource="{Binding HourlyForecasts}">
+        <!--  Headline  -->
+        <Label Style="{StaticResource _headline}" Text="{Static i18n:AppResources.label_Headline_Hourly}" />
+
+        <!--
+            Beginn der Liste in welcher die Daten der class HourlyForecast(Time(Hour),
+            Condition(Image) und Temperature in Grad) angezeigt werden
+        -->
+        <ListView x:Name="_hourlyForecast" ItemsSource="{Binding HourlyForecasts}">
+
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:HourlyForecast">
                     <ViewCell>
+
                         <Grid
-                            Padding="20"
+                            Margin="0,0,0,20"
+                            Padding="0,5,15,5"
                             BackgroundColor="AliceBlue"
-                            ColumnDefinitions=".30*,.40*,.30*">
+                            ColumnDefinitions=".35*,.30*,.35*"
+                            HeightRequest="70">
+
+                            <!--  Time (Hour)  -->
                             <Label
                                 Grid.Column="0"
-                                FontSize="25"
+                                Margin="0,10,10,10"
+                                Style="{StaticResource _minmaxhour}"
                                 Text="{Binding IntHour, StringFormat='{0} Uhr'}" />
+
+                            <!--
+                                Das Image bindet sich an die Eigenschaft Condition aus der class HourlyForecast
+                                welche im ViewModel, aktuell, durch ein Random definiert wird. Dieses Binding wird
+                                verknüpft mit dem Converter in welchem die Condition in ein Bild gewandelt wird
+                            -->
                             <Image Grid.Column="1" Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
+
+                            <!--  Temperatur in Grad  -->
                             <Label
                                 Grid.Column="2"
-                                FontSize="35"
-                                Text="{Binding Temperatur, StringFormat='{0}°'}" />
+                                FontSize="30"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Temperatur, StringFormat='{0}°'}"
+                                TextColor="Navy" />
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

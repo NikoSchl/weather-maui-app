@@ -7,83 +7,117 @@ using WeatherApp.Collections;
 using WeatherApp.Models;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using WeatherApp.Helpers;
 
 namespace WeatherApp.ViewModels
 {
     public class MainViewModel
     {
+        // TODO: Provisorisch als Prüfer für die Anzeige im UI, wird gewechselt durch echte Daten
         private Random Random = new Random();
 
-        public WindForecast windForecast { get; } = new WindForecast();
-
+        // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
         public HourlyForecast HourlyForecast { get; } = new HourlyForecast();
+
+        // Objekt mit den Eigenschaften (Windspeed und enum Winddirection)
+        public WindForecast WindForecast { get; } = new WindForecast();
+
 
         public MainViewModel()
         {
-            
-            GenerateRandomDataForWindDirection();
-        }
-
-        private void GenerateRandomDataForWindDirection()
-        {  
-            int x = Random.Next(1,9);
+            // Zufallszahl für die TagesTemperatur
+            // TODO: Methode/Eigenschaft, falls es ein Durchschnittswert ist
 
             HourlyForecast.Temperatur = Random.Next(-10, 30);
 
-            Winddirection winddirection = Winddirection.east;
 
-            switch(x)
-            {
-                case 1:
-                    winddirection = Winddirection.east; break;
-                case 2:
-                    winddirection = Winddirection.north; break;
-                case 3:
-                    winddirection = Winddirection.south; break;
-                case 4:
-                    winddirection = Winddirection.west; break;
-                case 5:
-                    winddirection = Winddirection.northeast; break;
-                case 6:
-                    winddirection = Winddirection.southeast; break;
-                case 7:
-                    winddirection = Winddirection.northwest; break;
-                case 8:
-                    winddirection = Winddirection.southwest; break;
-                default:
-                    winddirection = Winddirection.north; break;
-            }
+            // Zufallszahl für Windgeschwindigkeit wird gesetzt
 
-            windForecast.WindDirection = winddirection;
-            windForecast.Windspeed = Random.Next(1, 80);
+            WindForecast.Windspeed = Random.Next(1, 80);
 
 
+            GenerateImageForWeatherCondition();
 
-            WeatherCondition condition = WeatherCondition.snow;
+            GenerateImageForWinddirection();
 
-            switch (x)
-            {
-                case 1:
-                    condition = WeatherCondition.sunny;
-                    break;
-                case 2:
-                    condition = WeatherCondition.rain;
-                    break;
-                case 3:
-                    condition = WeatherCondition.suncloud;
-                    break;
-                case 4:
-                    condition = WeatherCondition.snow;
-                    break;
-                case 5:
-                    condition = WeatherCondition.cloudy;
-                    break;
-                default:
-                    condition = WeatherCondition.sunny;
-                    break;
-            }
 
-            HourlyForecast.Condition = condition;
+            // TODO: Event += OnProperty ?????
+            // HourlyForecast.PropertyChanged += HourlyForecastPropertyChanged;
         }
+
+
+
+        private void GenerateImageForWeatherCondition()
+        {
+            // Zufallszahl für die Wetterlage (sunny, ...) und das Image
+
+            int randomForWeatherCondition = Random.Next(1, 6);
+
+
+            // Prüft die Zufallszahl für die Wetterlage und speichert den passenden
+            // enum Wert in die Objekt-Variable
+
+            switch (randomForWeatherCondition)
+            {
+                case 1:
+                    HourlyForecast.Condition = WeatherCondition.sunny;
+                    break;
+                case 2:
+                    HourlyForecast.Condition = WeatherCondition.rain;
+                    break;
+                case 3:
+                    HourlyForecast.Condition = WeatherCondition.suncloud;
+                    break;
+                case 4:
+                    HourlyForecast.Condition = WeatherCondition.snow;
+                    break;
+                case 5:
+                    HourlyForecast.Condition = WeatherCondition.cloudy;
+                    break;
+                default:
+                    HourlyForecast.Condition = WeatherCondition.sunny;
+                    break;
+            }
+        }
+
+
+        private void GenerateImageForWinddirection()
+        {
+            // Zufallszahl für die Windrichtung (north, ...) und das Image
+
+            int randomForWinddirection = Random.Next(1, 9);
+
+
+            // Prüft die Zufallszahl für die Windrichtung und speichert den passenden
+            // enum Wert in die Objekt-Variable
+
+            switch (randomForWinddirection)
+            {
+                case 1:
+                    WindForecast.WindDirection = Winddirection.east; break;
+                case 2:
+                    WindForecast.WindDirection = Winddirection.north; break;
+                case 3:
+                    WindForecast.WindDirection = Winddirection.south; break;
+                case 4:
+                    WindForecast.WindDirection = Winddirection.west; break;
+                case 5:
+                    WindForecast.WindDirection = Winddirection.northeast; break;
+                case 6:
+                    WindForecast.WindDirection = Winddirection.southeast; break;
+                case 7:
+                    WindForecast.WindDirection = Winddirection.northwest; break;
+                case 8:
+                    WindForecast.WindDirection = Winddirection.southwest; break;
+                default:
+                    WindForecast.WindDirection = Winddirection.north; break;
+            }
+        }
+
+
+
+
+
     }
 }

@@ -13,16 +13,28 @@ namespace WeatherApp.Converters
     {
         private static readonly ImageSource _imageThermoHeiss = ImageSource.FromFile("thermometer_heiss.png");
         private static readonly ImageSource _imageThermoKalt = ImageSource.FromFile("thermometer_kalt.png");
+        private static readonly ImageSource _imageThermoMittel = ImageSource.FromFile("thermometer_mittel.png");
+
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            float Number = (float)value!;
+            if (value == null)
+            { return _imageThermoMittel; }
 
-            switch(Number)
+
+            float Number = (float)value;
+
+
+            switch (Number)
             {
-                case < 15: return _imageThermoKalt;
-                case > 15: return _imageThermoHeiss;
-                default: return _imageThermoHeiss;
+                case <= 10:
+                    return _imageThermoKalt;
+                case >= 20:
+                    return _imageThermoHeiss;
+                case > 10 and < 20:
+                    return _imageThermoMittel;
+                default:
+                    return _imageThermoHeiss;
             }
         }
 

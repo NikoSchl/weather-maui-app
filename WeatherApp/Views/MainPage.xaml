@@ -5,41 +5,92 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:collection="clr-namespace:WeatherApp.Collections"
     xmlns:converters="clr-namespace:WeatherApp.Converters"
-    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:helpers="clr-namespace:WeatherApp.Helpers"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
-    x:DataType="viewModels:MainViewModel">
+    x:DataType="viewModels:MainViewModel"
+    BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
         <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
 
+
+    <!--  Beginn des sichtbaren Bereichs, Opacity ist die Transparenz  -->
     <StackLayout
-        Margin="20,0,20,20"
-        Padding="30,0"
+        Margin="40"
         BackgroundColor="AliceBlue"
-        Spacing="25">
+        HeightRequest="490"
+        Opacity="0.85"
+        Spacing="10"
+        WidthRequest="310">
 
+
+        <!--  Weather Text  -->
+        <Label Style="{StaticResource _headline}" Text="{Static i18n:AppResources.label_Main}" />
+
+        <!--  Datum und Uhrzeit  -->
         <Label
-            Margin="20,20,20,0"
-            Style="{StaticResource Headline}"
-            Text="{Binding HourlyForecast.Condition}"
-            TextTransform="Uppercase" />
+            Margin="0,2,0,0"
+            FontSize="22"
+            Text="{Binding HourlyForecast.Date, StringFormat='{0}'}"
+            TextColor="Navy"
+            WidthRequest="170" />
 
-        <Label FontSize="20" Text="{Binding HourlyForecast.Date, StringFormat='{0:d}'}" />
-
+        <!--  WeatherCondition Image  -->
         <Image
+            Margin="0,28,0,20"
             Aspect="AspectFit"
-            HeightRequest="185"
+            HeightRequest="163"
             Source="{Binding HourlyForecast.Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
 
-        <Label Style="{StaticResource Headline}" Text="{Binding HourlyForecast.Temperatur, StringFormat='{0}°'}" />
 
-        <Image Source="{Binding windForecast.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}" WidthRequest="80" />
 
-        <Label Style="{StaticResource SubHeadline}" Text="{Binding windForecast.Windspeed, StringFormat='{0} km/h'}" />
+        <Grid
+            Margin="0,0,0,-18"
+            ColumnDefinitions=".25*,.20*,.55*"
+            HeightRequest="90"
+            WidthRequest="310">
 
+            <!--  Winddirection Image  -->
+            <Image
+                Grid.Column="0"
+                HeightRequest="50"
+                Source="{Binding WindForecast.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
+                VerticalOptions="Start"
+                WidthRequest="50" />
+
+            <!--  WindSpeed  -->
+            <Label
+                Grid.Column="0"
+                Padding="0,0,0,15"
+                FontSize="15"
+                Style="{StaticResource SubHeadline}"
+                Text="{Binding WindForecast.Windspeed, StringFormat='{0} km/h'}"
+                VerticalTextAlignment="End" />
+
+            <Label
+                Grid.Column="2"
+                Margin="30,0,0,0"
+                FontSize="90"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource Headline}"
+                Text="{Binding HourlyForecast.Temperatur, StringFormat='{0}°'}"
+                TextColor="CornflowerBlue" />
+        </Grid>
+
+
+        <!--  WeatherCondition Text  -->
+        <Label
+            BackgroundColor="CornflowerBlue"
+            FontSize="30"
+            HeightRequest="55"
+            Text="{Binding HourlyForecast.Condition}"
+            TextColor="AliceBlue"
+            TextTransform="Uppercase"
+            WidthRequest="310" />
 
     </StackLayout>
 

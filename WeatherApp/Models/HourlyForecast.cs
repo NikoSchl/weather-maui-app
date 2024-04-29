@@ -8,26 +8,30 @@ using WeatherApp.Helpers;
 
 namespace WeatherApp.Models
 {
-    public class HourlyForecast : NotifyPropertyHelper
+    public class HourlyForecast : WeatherConditionModel
     {
         private float _temperatur = 25;
 
         // für die Uhrzeit/Stunde und fürs Datum
-        private DateTime _date = DateTime.UtcNow;
+        private DateTime _date;
+        private Timer _timer;
 
+
+        // für die Stunde (Hour) in der 24-Stunden-View-Ansicht
         private int _intHour = 0;
 
-        private WeatherCondition _condition;
 
 
-       
         public float Temperatur
         {
             get { return _temperatur; }
             set
             {
-                _temperatur = value;
-                OnPropertyChanged(nameof(Temperatur));
+                if (_temperatur != value)
+                {
+                    _temperatur = value;
+                    OnPropertyChanged(nameof(Temperatur));
+                }
             }
         }
 
@@ -36,20 +40,10 @@ namespace WeatherApp.Models
             get { return _date; }
             set
             {
-                _date = value;
-                OnPropertyChanged(nameof(Date));
-            }
-        }
-
-        public WeatherCondition Condition
-        {
-            get { return _condition; }
-            set
-            {
-                if (_condition != value)
+                if (_date != value)
                 {
-                    _condition = value;
-                    OnPropertyChanged(nameof(Condition));
+                    _date = value;
+                    OnPropertyChanged(nameof(Date));
                 }
             }
         }
@@ -59,9 +53,36 @@ namespace WeatherApp.Models
             get { return _intHour; }
             set
             {
-                _intHour = value;
-                OnPropertyChanged(nameof(IntHour));
+                if (_intHour != value)
+                {
+                    _intHour = value;
+                    OnPropertyChanged(nameof(IntHour));
+                }
             }
         }
+
+        public Timer Timer
+        {
+            get { return _timer; }
+            set
+            {
+                if (_timer != value)
+                {
+                    _timer = value;
+                    OnPropertyChanged(nameof(Timer));
+                }
+            }
+        }
+
+
+        public HourlyForecast()
+        {
+            Date = DateTime.Now;
+
+            _timer = new Timer(new TimerCallback((s) => Date = DateTime.Now), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+        }
+
+
+
     }
 }

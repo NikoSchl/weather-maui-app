@@ -18,6 +18,23 @@
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
+            <!--  Überschrift der Seiten Label  -->
+            <Style x:Key="_headline" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Navy" />
+                <Setter Property="FontSize" Value="31" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Padding" Value="0,23,0,0" />
+                <Setter Property="TextTransform" Value="Uppercase" />
+                <Setter Property="WidthRequest" Value="310" />
+                <Setter Property="TextColor" Value="AliceBlue" />
+            </Style>
+
+            <!--  Label Min/Max/Hour  -->
+            <Style x:Key="_minmaxhour" TargetType="Label">
+                <Setter Property="FontSize" Value="19" />
+                <Setter Property="TextColor" Value="Navy" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

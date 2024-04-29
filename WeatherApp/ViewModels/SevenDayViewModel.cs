@@ -13,66 +13,61 @@ namespace WeatherApp.ViewModels
 {
     public class SevenDayViewModel
     {
+        // List in which the objects for the daily Forecast are saved/loaded in the CollectionView
+        public ObservableCollection<DailyForecast> DailyForecasts { get; } = new ObservableCollection<DailyForecast>();
+
+
+        // TODO: Provisionally as a checker for the display in the UI, it is replaced by real data
         Random Random = new Random();
 
-        public ObservableCollection<DailyForecast> DailyForecasts { get; } = new ObservableCollection<DailyForecast>();
+
 
         public SevenDayViewModel()
         {
             GenerateRandomDataForDailyForecast();
+
+            // TODO: Event += OnProperty ???
         }
+
 
         private void GenerateRandomDataForDailyForecast()
         {
+            // TODO: Notwendigkeit im ViewModel überlegen
+
             DateTime dateValue = DateTime.Now;
             int dayOfWeekNumber = (int)dateValue.DayOfWeek;
 
+
+            // sieben Durchläufe für sieben Tage der Woche
+
             for (int i = 0; i < 7; i++)
             {
+                // neues Objekt erstellt, mit vier werten
+                // (MaxTemperatur, MinTemperatur, Weekday, Condition)
+
                 DailyForecast dailyForecast = new DailyForecast();
 
-                int x = Random.Next(1, 6);
 
-                WeatherCondition condition = WeatherCondition.snow;
-
-                int one = Random.Next(-10, 35);
-                int two = Random.Next(-10, 35);
-
-                switch (x)
-                {
-                    case 1:
-                        condition = WeatherCondition.sunny;
-                        break;
-                    case 2:
-                        condition = WeatherCondition.rain;
-                        break;
-                    case 3:
-                        condition = WeatherCondition.suncloud;
-                        break;
-                    case 4:
-                        condition = WeatherCondition.snow;
-                        break;
-                    case 5:
-                        condition = WeatherCondition.cloudy;
-                        break;
-                    default:
-                        condition = WeatherCondition.sunny;
-                        break;
-                }
-                dailyForecast.Condition = condition;
+                GenerateWeatherCondition(dailyForecast);
 
 
-                if (one > two)
-                {
-                    dailyForecast.MaxTemperatur = one;
-                    dailyForecast.MinTemperatur = two;
-                }
+                GenerateMinMaxTemperatur(dailyForecast);
+
+
+                // Die Variable muss um eins erhöht werden damit der erste Tag der morgige ist
+                // und bei 6 auf 0 zurücksetzen
+
+                if (dayOfWeekNumber == 6)
+                { dayOfWeekNumber = 0; }
                 else
-                {
-                    dailyForecast.MaxTemperatur = two;
-                    dailyForecast.MinTemperatur = one;
-                }
+                { dayOfWeekNumber = dayOfWeekNumber + 1; }
 
+
+                // TODO: Converter (WeekdayToStringConverter) um die string (Sun, Mon,...) durch
+                // das enum zu ersetzen
+
+                // Die Zahl des heutigen Wochentages wird geprüft und der entsprechende string in
+                // die Objekt-Variable Weekday gespeichert
 
                 switch (dayOfWeekNumber)
                 {
@@ -94,17 +89,76 @@ namespace WeatherApp.ViewModels
                         dailyForecast.Weekday = "Sun"; break;
                 }
 
-                if(dayOfWeekNumber == 6)
-                {
-                    dayOfWeekNumber = 0;
-                }
-                else
-                {
-                    dayOfWeekNumber = dayOfWeekNumber + 1;
-                }
+
+                // Objekt mit allen gefüllten Daten wird in die ObservableCollection hinzugefügt
 
                 DailyForecasts.Add(dailyForecast);
             }
         }
+
+
+
+        private void GenerateMinMaxTemperatur(DailyForecast dailyForecast)
+        {
+            // zwei Zwischenvariablen für die Min Max Werte
+
+            int temperatureOne = Random.Next(-10, 35);
+            int temperatureTwo = Random.Next(-10, 35);
+
+
+            // Prüfung welche der beiden Zufallszahlen die größere ist
+            // um dann in die Objekt-Variable MaxTemperatur zu speichern
+
+            if (temperatureOne >= temperatureTwo)
+            {
+                dailyForecast.MaxTemperatur = temperatureOne;
+                dailyForecast.MinTemperatur = temperatureTwo;
+            }
+            else
+            {
+                dailyForecast.MaxTemperatur = temperatureTwo;
+                dailyForecast.MinTemperatur = temperatureOne;
+            }
+        }
+
+
+        private void GenerateWeatherCondition(DailyForecast dailyForecast)
+        {
+            // Zufallszahl für den switch
+
+            int randomForWeatherCondition = Random.Next(1, 6);
+
+
+            // im switch wird die Variable randomForWeatherCondition geprüft/ verglichen
+            // und der dahinterliegende enum-Wert in die Objekt-Variable Condition gespeichert
+
+            switch (randomForWeatherCondition)
+            {
+                case 1:
+                    dailyForecast.Condition = WeatherCondition.sunny;
+                    break;
+                case 2:
+                    dailyForecast.Condition = WeatherCondition.rain;
+                    break;
+                case 3:
+                    dailyForecast.Condition = WeatherCondition.suncloud;
+                    break;
+                case 4:
+                    dailyForecast.Condition = WeatherCondition.snow;
+                    break;
+                case 5:
+                    dailyForecast.Condition = WeatherCondition.cloudy;
+                    break;
+                default:
+                    dailyForecast.Condition = WeatherCondition.sunny;
+                    break;
+            }
+        }
+
+
+
+
+
+
     }
 }

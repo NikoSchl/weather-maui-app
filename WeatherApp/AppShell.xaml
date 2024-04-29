@@ -6,7 +6,14 @@
     xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
     xmlns:views="clr-namespace:WeatherApp.Views"
     Title="WeatherApp"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.BackgroundColor="Navy"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarBackgroundColor="Navy"
+    Shell.TabBarForegroundColor="AliceBlue"
+    Shell.TabBarTitleColor="AliceBlue"
+    Shell.TabBarUnselectedColor="CornflowerBlue"
+    Shell.TitleColor="CornflowerBlue">
 
     <TabBar>
         <Tab Title="{Static i18n:AppResources.label_Main}">

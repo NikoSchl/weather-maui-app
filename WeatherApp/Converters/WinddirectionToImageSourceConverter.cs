@@ -21,7 +21,15 @@ namespace WeatherApp.Converters
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
+            // The incoming value must be converted from an object into the value we need,
+            // in this case an enum which determines the wind direction. Because the value
+            // can never be zero, you don't need an if(). Conversion can be secured with (!)
+
             Winddirection winddirection = (Winddirection)value!;
+
+
+            // The switch handles all cases from the enum and determines
+            // which value (image) must be returned
 
             switch (winddirection)
             {

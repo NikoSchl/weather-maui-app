@@ -12,6 +12,12 @@ namespace WeatherApp.Collections
         rain,
         cloudy,
         snow,
-        suncloud
+        suncloud,
+        thunder,
+        sunrise,
+        sunset,
+        moon,
+        nightcloud,
+        nightrain
     }
 }
