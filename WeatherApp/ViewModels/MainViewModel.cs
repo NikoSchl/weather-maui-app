@@ -17,11 +17,14 @@ namespace WeatherApp.ViewModels
         // TODO: Provisorisch als Prüfer für die Anzeige im UI, wird gewechselt durch echte Daten
         private Random Random = new Random();
 
+
         // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
         public HourlyForecast HourlyForecast { get; } = new HourlyForecast();
 
+
         // Objekt mit den Eigenschaften (Windspeed und enum Winddirection)
         public WindForecast WindForecast { get; } = new WindForecast();
+
 
 
         public MainViewModel()
@@ -40,10 +43,6 @@ namespace WeatherApp.ViewModels
             GenerateImageForWeatherCondition();
 
             GenerateImageForWinddirection();
-
-
-            // TODO: Event += OnProperty ?????
-            // HourlyForecast.PropertyChanged += HourlyForecastPropertyChanged;
         }
 
 

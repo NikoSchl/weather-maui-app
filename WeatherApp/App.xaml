@@ -35,6 +35,14 @@
                 <Setter Property="TextColor" Value="Navy" />
             </Style>
 
+            <!--  Grundlegendes Layout  -->
+            <Style x:Key="_layout" TargetType="StackLayout">
+                <Setter Property="WidthRequest" Value="310" />
+                <Setter Property="HeightRequest" Value="490" />
+                <Setter Property="Opacity" Value="0.8" />
+                <Setter Property="Margin" Value="40" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

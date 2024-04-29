@@ -20,12 +20,9 @@
 
     <!--  Beginn des sichtbaren Bereichs, Opacity ist die Transparenz  -->
     <StackLayout
-        Margin="40"
         BackgroundColor="AliceBlue"
-        HeightRequest="490"
-        Opacity="0.85"
         Spacing="10"
-        WidthRequest="310">
+        Style="{StaticResource _layout}">
 
 
         <!--  Weather Text  -->
@@ -44,7 +41,8 @@
             Margin="0,28,0,20"
             Aspect="AspectFit"
             HeightRequest="163"
-            Source="{Binding HourlyForecast.Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
+            Source="{Binding HourlyForecast.Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}"
+            WidthRequest="190" />
 
 
 
@@ -62,7 +60,7 @@
                 VerticalOptions="Start"
                 WidthRequest="50" />
 
-            <!--  WindSpeed  -->
+            <!--  WindSpeed Text  -->
             <Label
                 Grid.Column="0"
                 Padding="0,0,0,15"
@@ -71,6 +69,7 @@
                 Text="{Binding WindForecast.Windspeed, StringFormat='{0} km/h'}"
                 VerticalTextAlignment="End" />
 
+            <!--  Temperatur  -->
             <Label
                 Grid.Column="2"
                 Margin="30,0,0,0"
@@ -86,7 +85,7 @@
         <Label
             BackgroundColor="CornflowerBlue"
             FontSize="30"
-            HeightRequest="55"
+            HeightRequest="56"
             Text="{Binding HourlyForecast.Condition}"
             TextColor="AliceBlue"
             TextTransform="Uppercase"

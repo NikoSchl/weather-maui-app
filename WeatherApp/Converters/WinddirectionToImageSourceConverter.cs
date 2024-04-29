@@ -35,20 +35,20 @@ namespace WeatherApp.Converters
             {
                 case Winddirection.north:
                     return _north;
+                case Winddirection.northeast:
+                    return _north_east;
+                case Winddirection.east:
+                    return _east;
+                case Winddirection.southeast:
+                    return _south_east;
                 case Winddirection.south:
                     return _south;
+                case Winddirection.southwest:
+                    return _south_west;
                 case Winddirection.west:
-                    return _east;
-                case Winddirection.east:
                     return _west;
                 case Winddirection.northwest:
                     return _north_west;
-                case Winddirection.northeast:
-                    return _north_east;
-                case Winddirection.southeast:
-                    return _south_east;
-                case Winddirection.southwest:
-                    return _south_west;
                 default:
                     return _north;
             }

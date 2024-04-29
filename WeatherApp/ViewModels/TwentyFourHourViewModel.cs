@@ -19,11 +19,12 @@ namespace WeatherApp.ViewModels
         // TODO: Provisorisch als Prüfer für die Anzeige im UI, wird gewechselt durch echte Daten
         private Random Random = new Random();
 
-        // TODO: Notwendigkeit überlegen !!!
+        // TODO: Notwendigkeit überlegen
         private DateTime date = DateTime.Now;
 
 
         WeatherConditionModel weatherConditionModel = new WeatherConditionModel();
+
 
         // Variable für das enum wird erstellt
 
@@ -34,8 +35,6 @@ namespace WeatherApp.ViewModels
         public TwentyFourHourViewModel()
         {
             GenerateRandomWeatherData();
-
-            // TODO: Event += OnProperty !!!
         }
 
 
@@ -45,8 +44,8 @@ namespace WeatherApp.ViewModels
         private void GenerateRandomWeatherData()
         {
             // TODO: Notwendigkeit und Position überlegen und ob hier oder im class HourlyForecast.cs
-            int currentHour = int.Parse(date.ToString("HH"));
-            int hour = currentHour;
+            int hour = int.Parse(date.ToString("HH"));
+          //  int hour = currentHour;
 
 
             // 24 Durchläufe, für 24 Stunden zu befüllen der Liste (ObservableCollection)

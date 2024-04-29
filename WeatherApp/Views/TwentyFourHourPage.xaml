@@ -21,11 +21,7 @@
         Beginn des sichtbaren Bereichs, Opacity ist die Transparenz
         Die ganzen Daten im Stacklayout, wo Scrollfunktion integriert ist
     -->
-    <StackLayout
-        Margin="40"
-        HeightRequest="490"
-        Opacity="0.8"
-        WidthRequest="310">
+    <StackLayout Style="{StaticResource _layout}">
 
         <!--  Headline  -->
         <Label Style="{StaticResource _headline}" Text="{Static i18n:AppResources.label_Headline_Hourly}" />
@@ -64,6 +60,7 @@
                             <!--  Temperatur in Grad  -->
                             <Label
                                 Grid.Column="2"
+                                Padding="0,0,15,0"
                                 FontSize="30"
                                 HorizontalTextAlignment="End"
                                 Text="{Binding Temperatur, StringFormat='{0}°'}"

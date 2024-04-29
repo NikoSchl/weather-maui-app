@@ -25,8 +25,6 @@ namespace WeatherApp.ViewModels
         public SevenDayViewModel()
         {
             GenerateRandomDataForDailyForecast();
-
-            // TODO: Event += OnProperty ???
         }
 
 
