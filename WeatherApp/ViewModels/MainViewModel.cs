@@ -12,12 +12,45 @@ using WeatherApp.Helpers;
 
 namespace WeatherApp.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : NotifyPropertyHelper
     {
         // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
-        public HourlyForecast HourlyForecast { get; } = HourlyForecast.GenerateHourlyForecastForMainPage();
+        private HourlyForecast? _hourlyForecast;
+
+        public HourlyForecast? HourlyForecast
+        {
+            get => _hourlyForecast;
+            private set
+            {
+                if(_hourlyForecast != value)
+                {
+                    _hourlyForecast = value;
+                    OnPropertyChanged(nameof(HourlyForecast));
+                }
+            }
+        }
 
         // Objekt mit den Eigenschaften (Windspeed und enum Winddirection)
-        public WindForecast WindForecast { get; } = WindForecast.GenerateWindForecast();
+        private WindForecast? _windForecast;
+        public WindForecast? WindForecast
+        {
+            get => _windForecast;
+            private set
+            {
+                if (_windForecast != value)
+                {
+                    _windForecast = value;
+                    OnPropertyChanged(nameof(WindForecast));
+                }
+            }
+        }
+
+
+
+        public void InitializeData()
+        {
+            HourlyForecast = HourlyForecast.GenerateHourlyForecastForMainPage();
+            WindForecast = WindForecast.GenerateWindForecast();
+        }
     }
 }

@@ -28,13 +28,25 @@ namespace WeatherApp.ViewModels
         {
             NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
 
-            GenerateRandomDataForDailyForecast();
+            //    GenerateRandomDataForDailyForecast();
 
 
-            //for(int i = 0; i < 7; i++)
-            //{
-            //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
+            //    //for(int i = 0; i < 7; i++)
+            //    //{
+            //    //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
+            //    //}
             //}
+        }
+
+
+        public void InitializeData()
+        {
+            GenerateRandomDataForDailyForecast();
+        }
+
+        public void CleanUpData()
+        {
+            DailyForecasts.Clear();
         }
 
 
@@ -42,6 +54,7 @@ namespace WeatherApp.ViewModels
         {
             await AppShell.Current.GoToAsync(AppShell.CreateDetailPageRoute);
         }
+
 
 
         private void GenerateRandomDataForDailyForecast()

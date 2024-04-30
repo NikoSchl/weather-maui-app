@@ -12,8 +12,6 @@ namespace WeatherApp.ViewModels
 {
     public class TwentyFourHourViewModel
     {
-        // Liste in welcher die Objekte für die stündliche Darstellung der 24 Stunden Vorschau
-        // im ListView gespeichert/geladen werden
         public ObservableCollection<HourlyForecast> HourlyForecasts { get; } = new ObservableCollection<HourlyForecast>();
 
         // TODO: Provisorisch als Prüfer für die Anzeige im UI, wird gewechselt durch echte Daten
@@ -31,11 +29,23 @@ namespace WeatherApp.ViewModels
         WeatherCondition condition = WeatherCondition.snow;
 
 
-
         public TwentyFourHourViewModel()
         {
-            GenerateRandomWeatherData();
         }
+
+
+        public void InitializeData()
+        {
+            if (HourlyForecasts.Count == 0)
+            {
+                GenerateRandomWeatherData();
+            }
+        }
+
+        //public void CleanUpData()
+        //{
+        //    HourlyForecasts.Clear();
+        //}
 
 
         /// <summary>
@@ -45,7 +55,6 @@ namespace WeatherApp.ViewModels
         {
             // TODO: Notwendigkeit und Position überlegen und ob hier oder im class HourlyForecast.cs
             int hour = int.Parse(date.ToString("HH"));
-          //  int hour = currentHour;
 
 
             // 24 Durchläufe, für 24 Stunden zu befüllen der Liste (ObservableCollection)

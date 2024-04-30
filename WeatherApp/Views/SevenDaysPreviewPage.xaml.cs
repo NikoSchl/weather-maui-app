@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using WeatherApp.ViewModels;
 
 namespace WeatherApp.Views;
@@ -12,7 +13,25 @@ public partial class SevenDaysPreviewPage : ContentPage
 		InitializeComponent();
         _viewModel = new SevenDayViewModel();
         BindingContext = _viewModel;
-	}
+
+        Debug.WriteLine("Created SevenDaysPreviewPage");
+
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _viewModel.InitializeData();
+        Debug.WriteLine("OnAppering SevenDaysPreviewPage");
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        _viewModel.CleanUpData();
+        Debug.WriteLine("OnDisappering SevenDaysPreviewPage");
+    }
+
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
