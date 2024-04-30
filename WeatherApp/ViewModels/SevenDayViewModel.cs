@@ -64,7 +64,7 @@ namespace WeatherApp.ViewModels
                 DailyForecast dailyForecast = new DailyForecast();
 
 
-                GenerateWeatherCondition(dailyForecast);
+                dailyForecast.Condition = (WeatherCondition) Random.Next(1, 7);
 
 
                 GenerateMinMaxTemperatur(dailyForecast);
@@ -138,34 +138,6 @@ namespace WeatherApp.ViewModels
             }
         }
 
-
-        private void GenerateWeatherCondition(DailyForecast dailyForecast)
-        {
-            // im switch wird die Variable randomForWeatherCondition geprüft/ verglichen
-            // und der dahinterliegende enum-Wert in die Objekt-Variable Condition gespeichert
-
-            switch (Random.Next(1, 6))
-            {
-                case 1:
-                    dailyForecast.Condition = WeatherCondition.sunny;
-                    break;
-                case 2:
-                    dailyForecast.Condition = WeatherCondition.rain;
-                    break;
-                case 3:
-                    dailyForecast.Condition = WeatherCondition.suncloud;
-                    break;
-                case 4:
-                    dailyForecast.Condition = WeatherCondition.snow;
-                    break;
-                case 5:
-                    dailyForecast.Condition = WeatherCondition.cloudy;
-                    break;
-                default:
-                    dailyForecast.Condition = WeatherCondition.sunny;
-                    break;
-            }
-        }
 
 
 

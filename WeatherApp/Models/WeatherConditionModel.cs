@@ -61,24 +61,6 @@ namespace WeatherApp.Models
         }
 
 
-        public static WeatherCondition GetRandomWeatherConditionShort()
-        {
-            switch (_random.Next(1, 6))
-            {
-                case 1:
-                    return WeatherCondition.sunny;
-                case 2:
-                    return WeatherCondition.rain;
-                case 3:
-                    return WeatherCondition.suncloud;
-                case 4:
-                    return WeatherCondition.snow;
-                case 5:
-                    return WeatherCondition.cloudy;
-                default:
-                    return WeatherCondition.sunny;
-            }
-        }
 
 
         public static WeatherCondition GetRandomWeatherConditionLong(int currenthour)

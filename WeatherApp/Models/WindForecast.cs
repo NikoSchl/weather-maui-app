@@ -52,33 +52,15 @@ namespace WeatherApp.Models
         {
             var windForecast = new WindForecast();
             windForecast.Windspeed = _random.Next(1, 80);
-            windForecast.WindDirection = GetRandomWindDirection();
+            // konvertiert eine Zufallszahl zwischen 1 und 8 in den enum Wert und gibt diesen aus
+            windForecast.WindDirection = (Winddirection)_random.Next(1, 9);
             return windForecast;
         }
 
-        private static Winddirection GetRandomWindDirection()
-        {
-            switch (_random.Next(1, 9))
-            {
-                case 1:
-                    return Winddirection.east;
-                case 2:
-                    return Winddirection.north; 
-                case 3:
-                    return Winddirection.south; 
-                case 4:
-                    return Winddirection.west; 
-                case 5:
-                    return Winddirection.northeast; 
-                case 6:
-                    return Winddirection.southeast; 
-                case 7:
-                    return Winddirection.northwest; 
-                case 8:
-                    return Winddirection.southwest; 
-                default:
-                    return Winddirection.north; 
-            }  
-        }
+
+
+
+
+
     }
 }

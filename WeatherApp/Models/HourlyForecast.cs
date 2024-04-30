@@ -94,31 +94,15 @@ namespace WeatherApp.Models
             // Temperatur wird mit einem Zufallswert erstellt
             hourlyForecast.Temperatur = _random.Next(-10, 30);
             // für die Condition wird die Methode aufgerufen, welche aus dem enum ein Zufallswert generiert
-            hourlyForecast.Condition = GetRandomWeatherCondition();
+            hourlyForecast.Condition = (WeatherCondition)_random.Next(1, 7);
             // gibt die gefüllte Instanz zurück
             return hourlyForecast;
         }
 
 
-       // ermittelt einen Wert aus dem enum WeatherCondition für die Weiterverarbeitung im UI
-       // um das passende Bild anzuzeigen
-        private static WeatherCondition GetRandomWeatherCondition()
-        {
-            switch (_random.Next(1, 6))
-            {
-                case 1:
-                    return WeatherCondition.sunny;
-                case 2:
-                    return WeatherCondition.rain;
-                case 3:
-                    return WeatherCondition.suncloud;
-                case 4:
-                    return WeatherCondition.snow;
-                case 5:
-                    return WeatherCondition.cloudy;
-                default:
-                    return WeatherCondition.sunny;
-            }
-        }
+
+
+
+
     }
 }
