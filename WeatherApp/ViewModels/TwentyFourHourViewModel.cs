@@ -36,16 +36,16 @@ namespace WeatherApp.ViewModels
 
         public void InitializeData()
         {
-            if (HourlyForecasts.Count == 0)
-            {
+            //if (HourlyForecasts.Count == 0)
+            //{
                 GenerateRandomWeatherData();
-            }
+            //}
         }
 
-        //public void CleanUpData()
-        //{
-        //    HourlyForecasts.Clear();
-        //}
+        public void CleanUpData()
+        {
+            HourlyForecasts.Clear();
+        }
 
 
         /// <summary>

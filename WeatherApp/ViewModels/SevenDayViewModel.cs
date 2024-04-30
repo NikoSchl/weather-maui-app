@@ -27,21 +27,18 @@ namespace WeatherApp.ViewModels
         public SevenDayViewModel()
         {
             NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
-
-            //    GenerateRandomDataForDailyForecast();
-
-
-            //    //for(int i = 0; i < 7; i++)
-            //    //{
-            //    //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
-            //    //}
-            //}
         }
 
 
         public void InitializeData()
         {
             GenerateRandomDataForDailyForecast();
+
+            //for(int i = 0; i < 7; i++)
+            //{
+            //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
+            //}
+        
         }
 
         public void CleanUpData()
@@ -88,9 +85,6 @@ namespace WeatherApp.ViewModels
                 else
                 { dayOfWeekNumber = dayOfWeekNumber + 1; }
 
-
-                // TODO: Converter (WeekdayToStringConverter) um die string (Sun, Mon,...) durch
-                // das enum zu ersetzen
 
                 // TODO: rüber ins Model DailyForecast
                 // Die Zahl des heutigen Wochentages wird geprüft und der entsprechende string in

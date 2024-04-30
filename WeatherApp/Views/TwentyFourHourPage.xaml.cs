@@ -26,7 +26,7 @@ public partial class TwentyFourHourPage : ContentPage
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-       // _viewModel.CleanUpData();
+        _viewModel.CleanUpData();
         Debug.WriteLine("OnDisappering TwentyFourHourPage");
     }
 }

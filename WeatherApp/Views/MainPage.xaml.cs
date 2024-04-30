@@ -27,7 +27,6 @@ namespace WeatherApp.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //_viewModel.CleanUpData();
             Debug.WriteLine("OnDisappering Mainpage");
 
         }
