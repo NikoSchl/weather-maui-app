@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WeatherApp.Helpers;
+using WeatherApp.Views;
 
 namespace WeatherApp.ViewModels
 {
