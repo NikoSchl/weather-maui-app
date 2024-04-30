@@ -16,18 +16,16 @@ namespace WeatherApp.ViewModels
         // List in which the objects for the daily Forecast are saved/loaded in the CollectionView
         public ObservableCollection<DailyForecast> DailyForecasts { get; } = new ObservableCollection<DailyForecast>();
 
+        public Command NavigateToDetailPageCommand { get; }
+
 
         // TODO: Provisionally as a checker for the display in the UI, it is replaced by real data
         Random Random = new Random();
-
-        public Command NavigateToDetailPageCommand { get; }
 
 
 
         public SevenDayViewModel()
         {
-            //GenerateRandomDataForDailyForecast();
-
             NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
 
             GenerateRandomDataForDailyForecast();
@@ -63,11 +61,10 @@ namespace WeatherApp.ViewModels
 
                 DailyForecast dailyForecast = new DailyForecast();
 
+                dailyForecast.Condition = (WeatherCondition) Random.Next(1, 6);
 
-                dailyForecast.Condition = (WeatherCondition) Random.Next(1, 7);
-
-
-                GenerateMinMaxTemperatur(dailyForecast);
+                dailyForecast.MaxTemperatur = Random.Next(10, 35);
+                dailyForecast.MinTemperatur = Random.Next(-10, 10);
 
 
                 // Die Variable muss um eins erhöht werden damit der erste Tag der morgige ist
@@ -112,33 +109,6 @@ namespace WeatherApp.ViewModels
                 DailyForecasts.Add(dailyForecast);
             }
         }
-
-
-
-        private void GenerateMinMaxTemperatur(DailyForecast dailyForecast)
-        {
-            // zwei Zwischenvariablen für die Min Max Werte
-
-            int temperatureOne = Random.Next(-10, 35);
-            int temperatureTwo = Random.Next(-10, 35);
-
-
-            // Prüfung welche der beiden Zufallszahlen die größere ist
-            // um dann in die Objekt-Variable MaxTemperatur zu speichern
-
-            if (temperatureOne >= temperatureTwo)
-            {
-                dailyForecast.MaxTemperatur = temperatureOne;
-                dailyForecast.MinTemperatur = temperatureTwo;
-            }
-            else
-            {
-                dailyForecast.MaxTemperatur = temperatureTwo;
-                dailyForecast.MinTemperatur = temperatureOne;
-            }
-        }
-
-
 
 
 

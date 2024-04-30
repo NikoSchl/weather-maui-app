@@ -19,7 +19,6 @@ namespace WeatherApp.Models
 
         // enums für die Wochentage (Sunday, Monday, ...)
 
-        private Weekday _day;
 
         private string _weekday = string.Empty;
 
@@ -53,18 +52,6 @@ namespace WeatherApp.Models
             }
         }
 
-        public Weekday Day
-        {
-            get { return _day; }
-            set
-            {
-                if (_day != value)
-                {
-                    _day = value;
-                    OnPropertyChanged(nameof(Day));
-                }
-            }
-        }
 
         public string Weekday
         {
@@ -83,7 +70,7 @@ namespace WeatherApp.Models
         private static DailyForecast GenerateDailyForecast()
         {
             var dailyForecast = new DailyForecast();
-            dailyForecast.Condition = (WeatherCondition)_random.Next(1, 7);
+            dailyForecast.Condition = (WeatherCondition)_random.Next(1, 6);
             return dailyForecast;
         }
 

@@ -52,7 +52,26 @@ namespace WeatherApp.ViewModels
 
             for (int i = 0; i < 24; i++)
             {
-                GenerateImageForHourlyWeatherCondition(hour);
+                weatherConditionModel.Sunrise = 5;
+                weatherConditionModel.Sunset = 20;
+
+
+                if (hour == weatherConditionModel.Sunrise)
+                {
+                    condition = WeatherCondition.sunrise;
+                }
+                else if (hour == weatherConditionModel.Sunset)
+                {
+                    condition = WeatherCondition.sunset;
+                }
+                else if (hour < weatherConditionModel.Sunrise || hour > weatherConditionModel.Sunset)
+                {
+                    condition = (WeatherCondition)Random.Next(8, 11);
+                }
+                else
+                {
+                    condition = (WeatherCondition)Random.Next(1, 6);
+                }
 
 
                 // Objekt wird in die Liste(ObservableCollection) hinzugefügt und 
@@ -68,71 +87,6 @@ namespace WeatherApp.ViewModels
                 { hour = 0; }
                 else
                 { hour = hour + 1; }
-            }
-        }
-
-
-        private void GenerateImageForHourlyWeatherCondition(int hour)
-        {
-            weatherConditionModel.Sunrise = 5;
-            weatherConditionModel.Sunset = 20;
-
-
-            if (hour == weatherConditionModel.Sunrise)
-            {
-                condition = WeatherCondition.sunrise;
-            }
-            else if (hour == weatherConditionModel.Sunset)
-            {
-                condition = WeatherCondition.sunset;
-            }
-            else if (hour < weatherConditionModel.Sunrise || hour > weatherConditionModel.Sunset)
-            {
-                switch (Random.Next(1, 4))
-                {
-                    case 1:
-                        condition = WeatherCondition.moon;
-                        break;
-                    case 2:
-                        condition = WeatherCondition.nightcloud;
-                        break;
-                    case 3:
-                        condition = WeatherCondition.nightrain;
-                        break;
-                    default:
-                        condition = WeatherCondition.moon;
-                        break;
-                }
-            }
-            else
-            {
-                // im switch wird die Zufallszahl (Variable randomForWeatherCondition) geprüft/ 
-                // verglichen und der definierte enum-Wert in die Variable condition gespeichert
-
-                switch (Random.Next(1, 7))
-                {
-                    case 1:
-                        condition = WeatherCondition.sunny;
-                        break;
-                    case 2:
-                        condition = WeatherCondition.rain;
-                        break;
-                    case 3:
-                        condition = WeatherCondition.suncloud;
-                        break;
-                    case 4:
-                        condition = WeatherCondition.snow;
-                        break;
-                    case 5:
-                        condition = WeatherCondition.cloudy;
-                        break;
-                    case 6:
-                        condition = WeatherCondition.thunder;
-                        break;
-                    default:
-                        condition = WeatherCondition.sunny;
-                        break;
-                }
             }
         }
 
