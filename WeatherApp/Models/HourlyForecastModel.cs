@@ -8,7 +8,7 @@ using WeatherApp.Helpers;
 
 namespace WeatherApp.Models
 {
-    public class HourlyForecast : WeatherConditionModel
+    public class HourlyForecastModel : WeatherConditionModel
     {
         private static readonly Random _random = new Random();
 
@@ -16,7 +16,6 @@ namespace WeatherApp.Models
 
         // für die Uhrzeit/Stunde und fürs Datum
         private DateTime _date;
-        private Timer _timer;
 
 
         // für die Stunde (Hour) in der 24-Stunden-View-Ansicht
@@ -63,44 +62,11 @@ namespace WeatherApp.Models
             }
         }
 
-        public Timer Timer
+
+        public HourlyForecastModel()
         {
-            get { return _timer; }
-            set
-            {
-                if (_timer != value)
-                {
-                    _timer = value;
-                    OnPropertyChanged(nameof(Timer));
-                }
-            }
         }
 
-
-        public HourlyForecast()
-        {
-            Date = DateTime.Now;
-
-            _timer = new Timer(new TimerCallback((s) => Date = DateTime.Now), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
-        }
-
-
-        // Generiert eine Instanz für die MainPage mit den Eigenschaften Temperatur und WeatherCondition
-        // <returns>gefüllte Instanz
-        public static HourlyForecast GenerateHourlyForecastForMainPage()
-        {
-            // Instanz wird erstellt
-            var hourlyForecast = new HourlyForecast();
-
-            // Temperatur wird mit einem Zufallswert erstellt
-            hourlyForecast.Temperatur = _random.Next(-10, 30);
-
-            // für die Condition wird die Methode aufgerufen, welche aus dem enum ein Zufallswert generiert
-            hourlyForecast.Condition = (WeatherConditionCollection)_random.Next(1, 6);
-           
-            // gibt die gefüllte Instanz zurück
-            return hourlyForecast;
-        }
 
 
 

@@ -69,8 +69,14 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\TwentyFourHourPage.xaml.cs">
-	    <DependentUpon>TwentyFourHourPage.xaml</DependentUpon>
+	  <Compile Update="Views\HourlyForecastPage.xaml.cs">
+	    <DependentUpon>HourlyForecastPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\DailyForecastPage.xaml.cs">
+	    <DependentUpon>DailyForecastPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TomorrowForecastPage.xaml.cs">
+	    <DependentUpon>TomorrowForecastPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -85,13 +91,13 @@
 	  <MauiXaml Update="Views\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TodayDetailPage.xaml">
+	  <MauiXaml Update="Views\TomorrowForecastPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TwentyFourHourPage.xaml">
+	  <MauiXaml Update="Views\HourlyForecastPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\SevenDaysPreviewPage.xaml">
+	  <MauiXaml Update="Views\DailyForecastPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -18,6 +18,7 @@ namespace WeatherApp.Models
         private int _sunrise = 0;
         private int _sunset = 0;
 
+       
 
         public WeatherConditionCollection Condition
         {
@@ -61,6 +62,27 @@ namespace WeatherApp.Models
         }
 
 
+        public WeatherConditionModel()
+        {
+        }
+
+        public WeatherConditionModel(WeatherConditionCollection condition)
+        {
+            Condition = condition;
+        }
+
+        public WeatherConditionModel(WeatherConditionCollection condition, int sunrise, int sunset)
+        {
+            Condition = condition;
+            Sunrise = sunrise;
+            Sunset = sunset;
+        }
+
+
+        public static WeatherConditionCollection GetRandomWeatherConditionShort()
+        {
+            return (WeatherConditionCollection)_random.Next(1, 7);
+        }
 
 
         public static WeatherConditionCollection GetRandomWeatherConditionLong(int currenthour)

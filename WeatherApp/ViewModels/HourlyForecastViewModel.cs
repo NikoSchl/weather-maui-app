@@ -10,9 +10,9 @@ using System.Collections.ObjectModel;
 
 namespace WeatherApp.ViewModels
 {
-    public class TwentyFourHourViewModel
+    public class HourlyForecastViewModel
     {
-        public ObservableCollection<HourlyForecast> HourlyForecasts { get; } = new ObservableCollection<HourlyForecast>();
+        public ObservableCollection<HourlyForecastModel> HourlyForecasts { get; } = new ObservableCollection<HourlyForecastModel>();
 
         // TODO: Provisorisch als Prüfer für die Anzeige im UI, wird gewechselt durch echte Daten
         private Random Random = new Random();
@@ -29,7 +29,7 @@ namespace WeatherApp.ViewModels
         WeatherConditionCollection condition = WeatherConditionCollection.snow;
 
 
-        public TwentyFourHourViewModel()
+        public HourlyForecastViewModel()
         {
         }
 
@@ -85,8 +85,7 @@ namespace WeatherApp.ViewModels
 
                 // Objekt wird in die Liste(ObservableCollection) hinzugefügt und 
                 // gleichzeitig ein neues Objekt der class HourlyForecast erstellt 
-
-                HourlyForecasts.Add(new HourlyForecast { Condition = condition, Temperatur = Random.Next(-5, 30), IntHour = hour });
+                HourlyForecasts.Add(new HourlyForecastModel { Condition = condition, Temperatur = Random.Next(-5, 30), IntHour = hour });
 
 
                 // Prüfung, wenn die Variable für die Sunde 23 beträgt, setze den Wert auf 0

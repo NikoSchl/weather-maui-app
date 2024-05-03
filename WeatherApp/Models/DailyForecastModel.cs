@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Helpers;
+using WeatherApp.Models;
 using WeatherApp.Collections;
 
 namespace WeatherApp.Models
 {
-    public class DailyForecast : WeatherConditionModel
+    public class DailyForecastModel : WeatherConditionModel
     {
         private static readonly Random _random = new Random();
+
 
         private float _maxTemperatur = 0;
         private float _minTemperatur = 0;
 
 
         // enums für die Wochentage (Sunday, Monday, ...)
-
 
         private string _weekday = string.Empty;
 
@@ -65,15 +66,6 @@ namespace WeatherApp.Models
                 }
             }
         }
-
-
-        private static DailyForecast GenerateDailyForecast()
-        {
-            var dailyForecast = new DailyForecast();
-            dailyForecast.Condition = (WeatherConditionCollection)_random.Next(1, 6);
-            return dailyForecast;
-        }
-
 
 
 

@@ -8,24 +8,27 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
-    public class WindForecast : NotifyPropertyBase
+    public class WindForecastModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
-        private float _windSpeed = 0;
 
-        // enum für die acht möglichen Windrichtungen
+        //   ------------------ Eigenschaften ------------------ //
+
+        private float _windSpeedKmh = 0;
+
+        // enum
         private WindDirectionCollection _windDirection;
 
 
-        public float Windspeed
+        public float WindSpeedKmh
         {
-            get { return _windSpeed; }
+            get { return _windSpeedKmh; }
             set
             {
-                if (_windSpeed != value)
+                if (_windSpeedKmh != value)
                 {
-                    _windSpeed = value;
-                    OnPropertyChanged(nameof(Windspeed));
+                    _windSpeedKmh = value;
+                    OnPropertyChanged(nameof(WindSpeedKmh));
                 }
             }
         }
@@ -47,11 +50,25 @@ namespace WeatherApp.Models
         }
 
 
+        //   ------------------ Konstruktoren ------------------ //
 
-        public static WindForecast GenerateWindForecast()
+        public WindForecastModel()
         {
-            var windForecast = new WindForecast();
-            windForecast.Windspeed = _random.Next(1, 80);
+        }
+
+        public WindForecastModel(float windSpeedKmh, WindDirectionCollection windDirection)
+        {
+            WindSpeedKmh = windSpeedKmh;
+            WindDirection = windDirection;
+        }
+
+
+        //   ------------------ Methoden zum generieren von Mockup Daten ------------------ //
+
+        public static WindForecastModel GenerateWindForecast()
+        {
+            var windForecast = new WindForecastModel();
+            windForecast.WindSpeedKmh = _random.Next(1, 80);
             // konvertiert eine Zufallszahl zwischen 1 und 8 in den enum Wert und gibt diesen aus
             windForecast.WindDirection = (WindDirectionCollection)_random.Next(1, 9);
             return windForecast;

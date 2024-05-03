@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="WeatherApp.Views.SevenDaysPreviewPage"
+    x:Class="WeatherApp.Views.DailyForecastPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:collections="clr-namespace:WeatherApp.Collections"
@@ -10,7 +10,7 @@
     xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="Daily Forecast"
-    x:DataType="viewModels:SevenDayViewModel"
+    x:DataType="viewModels:DailyForecastViewModel"
     BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
@@ -38,7 +38,7 @@
             </CollectionView.ItemsLayout>
 
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:DailyForecast">
+                <DataTemplate x:DataType="models:DailyForecastModel">
 
                     <Grid
                         BackgroundColor="AliceBlue"
@@ -134,10 +134,13 @@
             BackgroundColor="Navy"
             Command="{Binding NavigateToDetailPageCommand}"
             CornerRadius="0"
-            FontSize="13"
+            FontAttributes="Bold"
+            FontSize="15"
+            HorizontalOptions="Center"
             Opacity="0.8"
-            Text="next Day Detail"
-            WidthRequest="130" />
+            Text="Tomorrow&#10; Forecast"
+            VerticalOptions="Center"
+            WidthRequest="120" />
 
     </StackLayout>
 </ContentPage>

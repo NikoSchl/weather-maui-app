@@ -15,33 +15,16 @@ namespace WeatherApp.ViewModels
 {
     public class MainViewModel : NotifyPropertyBase
     {
-        // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
-        private HourlyForecast? _hourlyForecast;
-
-        public HourlyForecast? HourlyForecast
+        private WeatherDataMainModel? _weatherDataModel;
+        public WeatherDataMainModel? WeatherDataModel
         {
-            get => _hourlyForecast;
+            get { return _weatherDataModel; }
             private set
             {
-                if(_hourlyForecast != value)
+                if(value != _weatherDataModel)
                 {
-                    _hourlyForecast = value;
-                    OnPropertyChanged(nameof(HourlyForecast));
-                }
-            }
-        }
-
-        // Objekt mit den Eigenschaften (Windspeed und enum Winddirection)
-        private WindForecast? _windForecast;
-        public WindForecast? WindForecast
-        {
-            get => _windForecast;
-            private set
-            {
-                if (_windForecast != value)
-                {
-                    _windForecast = value;
-                    OnPropertyChanged(nameof(WindForecast));
+                    _weatherDataModel = value;
+                    OnPropertyChanged(nameof(WeatherDataModel));
                 }
             }
         }
@@ -50,8 +33,7 @@ namespace WeatherApp.ViewModels
 
         public void InitializeData()
         {
-            HourlyForecast = HourlyForecast.GenerateHourlyForecastForMainPage();
-            WindForecast = WindForecast.GenerateWindForecast();
+            WeatherDataModel = WeatherDataMainModel.GenerateDataForMainPage();
         }
     }
 }

@@ -13,7 +13,7 @@
     BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
-        <converters:WindDirectionToImageSourceConverter x:Key="windDirectionToImageSourceConverter" />
+        <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
 
@@ -32,7 +32,7 @@
         <Label
             Margin="0,2,0,0"
             FontSize="22"
-            Text="{Binding HourlyForecast.Date, StringFormat='{0}'}"
+            Text="{Binding WeatherDataModel.Date, StringFormat='{0}'}"
             TextColor="Navy"
             WidthRequest="170" />
 
@@ -41,7 +41,7 @@
             Margin="0,28,0,20"
             Aspect="AspectFit"
             HeightRequest="163"
-            Source="{Binding HourlyForecast.Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}"
+            Source="{Binding WeatherDataModel.WeatherConditionCollection, Converter={StaticResource weatherConditionToImageSourceConvert}}"
             WidthRequest="190" />
 
 
@@ -56,7 +56,7 @@
             <Image
                 Grid.Column="0"
                 HeightRequest="50"
-                Source="{Binding WindForecast.WindDirection, Converter={StaticResource windDirectionToImageSourceConverter}}"
+                Source="{Binding WeatherDataModel.WindForecastModel.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
                 VerticalOptions="Start"
                 WidthRequest="50" />
 
@@ -66,7 +66,7 @@
                 Padding="0,0,0,15"
                 FontSize="15"
                 Style="{StaticResource SubHeadline}"
-                Text="{Binding WindForecast.Windspeed, StringFormat='{0} km/h'}"
+                Text="{Binding WeatherDataModel.WindForecastModel.WindSpeedKmh, StringFormat='{0} km/h'}"
                 VerticalTextAlignment="End" />
 
             <!--  Temperatur  -->
@@ -76,7 +76,7 @@
                 FontSize="90"
                 HorizontalTextAlignment="End"
                 Style="{StaticResource Headline}"
-                Text="{Binding HourlyForecast.Temperatur, StringFormat='{0}°'}"
+                Text="{Binding WeatherDataModel.TemperatureCelsius, StringFormat='{0}°'}"
                 TextColor="CornflowerBlue" />
         </Grid>
 
@@ -86,7 +86,7 @@
             BackgroundColor="CornflowerBlue"
             FontSize="30"
             HeightRequest="56"
-            Text="{Binding HourlyForecast.Condition}"
+            Text="{Binding WeatherDataModel.WeatherConditionCollection}"
             TextColor="AliceBlue"
             TextTransform="Uppercase"
             WidthRequest="310" />

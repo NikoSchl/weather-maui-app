@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WeatherApp.Views.TomorrowForecastPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:WeatherApp.Converters"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:models="clr-namespace:WeatherApp.Models"
+    xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
+    Title="TodayDetailPage"
+    x:DataType="viewModels:TomorrowForecastViewModel"
+    BackgroundImageSource="wolken_one.jpg">
+
+    <ContentPage.Resources>
+        <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
+        <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
+
+    </ContentPage.Resources>
+
+    <StackLayout Style="{StaticResource _layout}">
+
+        <Label
+            Margin="0"
+            Style="{StaticResource _headline}"
+            Text="Wetter Morgen" />
+
+        <CollectionView
+            x:Name="_tomorrowForecast"
+            HorizontalOptions="Center"
+            ItemsSource="{Binding TomorrowList}"
+            VerticalOptions="Center">
+
+            <!--  Definiert den Verlauf und den Zwischenraum der Zellen  -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:WeatherDataMainModel">
+
+
+
+                    <Grid
+                        Margin="0,0,0,15"
+                        Padding="5"
+                        BackgroundColor="AliceBlue"
+                        ColumnDefinitions=".40*,.25*,.35*"
+                        HeightRequest="90"
+                        RowDefinitions=".50*,.50*">
+
+                        <!--  Time (Hour)  -->
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            BackgroundColor="CornflowerBlue"
+                            HorizontalOptions="Start"
+                            Text="{Binding Tomorrow, StringFormat='{0:m}'}"
+                            TextColor="AliceBlue"
+                            VerticalOptions="Start"
+                            WidthRequest="87" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="0,0,34,0"
+                            Text="{Binding DayTimeCollection}"
+                            TextColor="Navy"
+                            TextTransform="Uppercase"
+                            VerticalOptions="End" />
+
+                        <Image
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="30,0,0,0"
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Source="regenschirm.png"
+                            WidthRequest="50" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Padding="0,0,18,0"
+                            HorizontalOptions="End"
+                            Text="{Binding WindForecastModel.WindSpeedKmh, StringFormat='{0}%'}" />
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,5,0,-5"
+                            HeightRequest="50"
+                            Source="{Binding WeatherConditionCollection, Converter={StaticResource weatherConditionToImageSourceConvert}}"
+                            WidthRequest="50" />
+
+
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="26"
+                            Text="{Binding TemperatureCelsius, StringFormat='{0}°'}"
+                            TextColor="Navy"
+                            VerticalTextAlignment="End" />
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0,0,10,-5"
+                            HorizontalOptions="End"
+                            Source="{Binding WindForecastModel.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
+                            VerticalOptions="End"
+                            WidthRequest="30" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="End"
+                            Text="{Binding WindForecastModel.WindSpeedKmh, StringFormat='{0}km/h'}" />
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+    </StackLayout>
+</ContentPage>

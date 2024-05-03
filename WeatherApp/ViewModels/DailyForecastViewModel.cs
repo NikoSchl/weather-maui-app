@@ -11,10 +11,10 @@ using WeatherApp.Models;
 
 namespace WeatherApp.ViewModels
 {
-    public class SevenDayViewModel
+    public class DailyForecastViewModel
     {
         // List in which the objects for the daily Forecast are saved/loaded in the CollectionView
-        public ObservableCollection<DailyForecast> DailyForecasts { get; } = new ObservableCollection<DailyForecast>();
+        public ObservableCollection<DailyForecastModel> DailyForecasts { get; } = new ObservableCollection<DailyForecastModel>();
 
         public Command NavigateToDetailPageCommand { get; }
 
@@ -24,7 +24,7 @@ namespace WeatherApp.ViewModels
 
 
 
-        public SevenDayViewModel()
+        public DailyForecastViewModel()
         {
             NavigateToDetailPageCommand = new Command(NavigateToDetailPage);
         }
@@ -33,12 +33,6 @@ namespace WeatherApp.ViewModels
         public void InitializeData()
         {
             GenerateRandomDataForDailyForecast();
-
-            //for(int i = 0; i < 7; i++)
-            //{
-            //    DailyForecasts.Add(DailyForecast.GenerateDailyForecast());
-            //}
-        
         }
 
         public void CleanUpData()
@@ -49,7 +43,7 @@ namespace WeatherApp.ViewModels
 
         private async void NavigateToDetailPage()
         {
-            await AppShell.Current.GoToAsync(AppShell.CreateDetailPageRoute);
+            await AppShell.Current.GoToAsync(AppShell.CreateTomorrowForecastPageRoute);
         }
 
 
@@ -69,7 +63,7 @@ namespace WeatherApp.ViewModels
                 // neues Objekt erstellt, mit vier werten
                 // (MaxTemperatur, MinTemperatur, Weekday, Condition)
 
-                DailyForecast dailyForecast = new DailyForecast();
+                DailyForecastModel dailyForecast = new DailyForecastModel();
 
                 dailyForecast.Condition = (WeatherConditionCollection) Random.Next(1, 6);
 

@@ -25,14 +25,14 @@
         <Tab Title="{Static i18n:AppResources.label_24hPreview}">
             <ShellContent
                 Title="{Static i18n:AppResources.label_24hPreview}"
-                ContentTemplate="{DataTemplate views:TwentyFourHourPage}"
-                Route="TwentyFourHourPage" />
+                ContentTemplate="{DataTemplate views:HourlyForecastPage}"
+                Route="HourlyForecastPage" />
         </Tab>
         <Tab Title="{Static i18n:AppResources.label_7DayPreview}">
             <ShellContent
                 Title="{Static i18n:AppResources.label_7DayPreview}"
-                ContentTemplate="{DataTemplate views:SevenDaysPreviewPage}"
-                Route="SevenDaysPreviewPage" />
+                ContentTemplate="{DataTemplate views:DailyForecastPage}"
+                Route="DailyForecastPage" />
         </Tab>
         <Tab Title="{Static i18n:AppResources.label_Settings}">
             <ShellContent

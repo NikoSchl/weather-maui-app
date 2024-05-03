@@ -3,16 +3,16 @@ using WeatherApp.ViewModels;
 
 namespace WeatherApp.Views;
 
-public partial class TwentyFourHourPage : ContentPage
+public partial class HourlyForecastPage : ContentPage
 {
-	private readonly TwentyFourHourViewModel _viewModel;
-	public TwentyFourHourPage()
+	private readonly HourlyForecastViewModel _viewModel;
+	public HourlyForecastPage()
 	{
 		InitializeComponent();
-        _viewModel = new TwentyFourHourViewModel();
+        _viewModel = new HourlyForecastViewModel();
         BindingContext = _viewModel;
 
-        Debug.WriteLine("Created TwentyFourHourPage");
+        Debug.WriteLine("Created HourlyForecastPage");
 
     }
 
@@ -20,13 +20,13 @@ public partial class TwentyFourHourPage : ContentPage
     {
         base.OnAppearing();
         _viewModel.InitializeData();
-        Debug.WriteLine("OnAppering TwentyFourHourPage");
+        Debug.WriteLine("OnAppering HourlyForecastPage");
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
         _viewModel.CleanUpData();
-        Debug.WriteLine("OnDisappering TwentyFourHourPage");
+        Debug.WriteLine("OnDisappering HourlyForecastPage");
     }
 }

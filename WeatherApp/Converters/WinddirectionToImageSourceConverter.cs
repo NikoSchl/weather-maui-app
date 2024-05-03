@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace WeatherApp.Converters
 {
-    public class WindDirectionToImageSourceConverter : IValueConverter
+    public class WinddirectionToImageSourceConverter : IValueConverter
     {
         private static readonly ImageSource _north = ImageSource.FromFile("north.png");
         private static readonly ImageSource _south = ImageSource.FromFile("south.png");
