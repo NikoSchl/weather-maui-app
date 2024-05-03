@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Collections
 {
-    public enum Winddirection
+    public enum WeekdayCollection
     {
-        north,
-        northeast,
-        east,
-        southeast,
-        south,
-        southwest,
-        west,
-        northwest
+        Mon,
+        Tue,
+        Wed,
+        Thu,
+        Fri,
+        Sat,
+        Sun
     }
 }

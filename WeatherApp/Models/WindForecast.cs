@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
-    public class WindForecast : NotifyPropertyHelper
+    public class WindForecast : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
         private float _windSpeed = 0;
 
         // enum für die acht möglichen Windrichtungen
-        private Winddirection _windDirection;
+        private WindDirectionCollection _windDirection;
 
 
         public float Windspeed
@@ -30,7 +30,7 @@ namespace WeatherApp.Models
             }
         }
 
-        public Winddirection WindDirection
+        public WindDirectionCollection WindDirection
         {
             get
             {
@@ -53,7 +53,7 @@ namespace WeatherApp.Models
             var windForecast = new WindForecast();
             windForecast.Windspeed = _random.Next(1, 80);
             // konvertiert eine Zufallszahl zwischen 1 und 8 in den enum Wert und gibt diesen aus
-            windForecast.WindDirection = (Winddirection)_random.Next(1, 9);
+            windForecast.WindDirection = (WindDirectionCollection)_random.Next(1, 9);
             return windForecast;
         }
 

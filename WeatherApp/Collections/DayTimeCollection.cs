@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Collections
 {
-    public enum Weekday
+    public enum DayTimeCollection
     {
-        Mon,
-        Tue,
-        Wed,
-        Thu,
-        Fri,
-        Sat,
-        Sun
+        Morgens,
+        Mittags,
+        Abends,
+        Nachts
     }
 }

@@ -70,7 +70,7 @@ namespace WeatherApp.Models
         private static DailyForecast GenerateDailyForecast()
         {
             var dailyForecast = new DailyForecast();
-            dailyForecast.Condition = (WeatherCondition)_random.Next(1, 6);
+            dailyForecast.Condition = (WeatherConditionCollection)_random.Next(1, 6);
             return dailyForecast;
         }
 

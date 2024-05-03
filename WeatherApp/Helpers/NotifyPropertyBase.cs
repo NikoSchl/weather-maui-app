@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Helpers
 {
-    public abstract class NotifyPropertyHelper : INotifyPropertyChanged
+    public abstract class NotifyPropertyBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -26,7 +26,7 @@ namespace WeatherApp.ViewModels
 
         // Variable für das enum wird erstellt
 
-        WeatherCondition condition = WeatherCondition.snow;
+        WeatherConditionCollection condition = WeatherConditionCollection.snow;
 
 
         public TwentyFourHourViewModel()
@@ -67,19 +67,19 @@ namespace WeatherApp.ViewModels
 
                 if (hour == weatherConditionModel.Sunrise)
                 {
-                    condition = WeatherCondition.sunrise;
+                    condition = WeatherConditionCollection.sunrise;
                 }
                 else if (hour == weatherConditionModel.Sunset)
                 {
-                    condition = WeatherCondition.sunset;
+                    condition = WeatherConditionCollection.sunset;
                 }
                 else if (hour < weatherConditionModel.Sunrise || hour > weatherConditionModel.Sunset)
                 {
-                    condition = (WeatherCondition)Random.Next(8, 11);
+                    condition = (WeatherConditionCollection)Random.Next(8, 11);
                 }
                 else
                 {
-                    condition = (WeatherCondition)Random.Next(1, 6);
+                    condition = (WeatherConditionCollection)Random.Next(1, 6);
                 }
 
 

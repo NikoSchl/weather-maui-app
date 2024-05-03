@@ -96,7 +96,7 @@ namespace WeatherApp.Models
             hourlyForecast.Temperatur = _random.Next(-10, 30);
 
             // für die Condition wird die Methode aufgerufen, welche aus dem enum ein Zufallswert generiert
-            hourlyForecast.Condition = (WeatherCondition)_random.Next(1, 6);
+            hourlyForecast.Condition = (WeatherConditionCollection)_random.Next(1, 6);
            
             // gibt die gefüllte Instanz zurück
             return hourlyForecast;

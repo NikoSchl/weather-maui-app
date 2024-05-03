@@ -71,7 +71,7 @@ namespace WeatherApp.ViewModels
 
                 DailyForecast dailyForecast = new DailyForecast();
 
-                dailyForecast.Condition = (WeatherCondition) Random.Next(1, 6);
+                dailyForecast.Condition = (WeatherConditionCollection) Random.Next(1, 6);
 
                 dailyForecast.MaxTemperatur = Random.Next(10, 35);
                 dailyForecast.MinTemperatur = Random.Next(-10, 10);

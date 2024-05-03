@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Collections
 {
-    public enum WeatherCondition
+    public enum WeatherConditionCollection
     {
         sunny,
         rain,

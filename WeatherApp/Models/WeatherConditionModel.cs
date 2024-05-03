@@ -9,17 +9,17 @@ using Microsoft.Maui.Controls;
 
 namespace WeatherApp.Models
 {
-    public class WeatherConditionModel : NotifyPropertyHelper
+    public class WeatherConditionModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
 
-        private WeatherCondition _condition;
+        private WeatherConditionCollection _condition;
 
         private int _sunrise = 0;
         private int _sunset = 0;
 
 
-        public WeatherCondition Condition
+        public WeatherConditionCollection Condition
         {
             get { return _condition; }
             set
@@ -63,7 +63,7 @@ namespace WeatherApp.Models
 
 
 
-        public static WeatherCondition GetRandomWeatherConditionLong(int currenthour)
+        public static WeatherConditionCollection GetRandomWeatherConditionLong(int currenthour)
         {
             var weatherConditionModel = new WeatherConditionModel();
             weatherConditionModel.Sunrise = 5;
@@ -72,19 +72,19 @@ namespace WeatherApp.Models
 
             if (currenthour == weatherConditionModel.Sunrise)
             {
-                return WeatherCondition.sunrise;
+                return WeatherConditionCollection.sunrise;
             }
             else if (currenthour == weatherConditionModel.Sunset)
             {
-                return WeatherCondition.sunset;
+                return WeatherConditionCollection.sunset;
             }
             else if (currenthour < weatherConditionModel.Sunrise || currenthour > weatherConditionModel.Sunset)
             {
-                return (WeatherCondition)_random.Next(8, 11);
+                return (WeatherConditionCollection)_random.Next(8, 11);
             }
             else
             {
-                return (WeatherCondition)_random.Next(1, 7);
+                return (WeatherConditionCollection)_random.Next(1, 7);
             }
         }
 

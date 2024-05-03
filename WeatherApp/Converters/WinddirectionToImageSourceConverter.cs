@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace WeatherApp.Converters
 {
-    public class WinddirectionToImageSourceConverter : IValueConverter
+    public class WindDirectionToImageSourceConverter : IValueConverter
     {
         private static readonly ImageSource _north = ImageSource.FromFile("north.png");
         private static readonly ImageSource _south = ImageSource.FromFile("south.png");
@@ -25,7 +25,7 @@ namespace WeatherApp.Converters
             // in this case an enum which determines the wind direction. Because the value
             // can never be zero, you don't need an if(). Conversion can be secured with (!)
 
-            Winddirection winddirection = (Winddirection)value!;
+            WindDirectionCollection winddirection = (WindDirectionCollection)value!;
 
 
             // The switch handles all cases from the enum and determines
@@ -33,21 +33,21 @@ namespace WeatherApp.Converters
 
             switch (winddirection)
             {
-                case Winddirection.north:
+                case WindDirectionCollection.north:
                     return _north;
-                case Winddirection.northeast:
+                case WindDirectionCollection.northeast:
                     return _north_east;
-                case Winddirection.east:
+                case WindDirectionCollection.east:
                     return _east;
-                case Winddirection.southeast:
+                case WindDirectionCollection.southeast:
                     return _south_east;
-                case Winddirection.south:
+                case WindDirectionCollection.south:
                     return _south;
-                case Winddirection.southwest:
+                case WindDirectionCollection.southwest:
                     return _south_west;
-                case Winddirection.west:
+                case WindDirectionCollection.west:
                     return _west;
-                case Winddirection.northwest:
+                case WindDirectionCollection.northwest:
                     return _north_west;
                 default:
                     return _north;

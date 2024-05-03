@@ -13,7 +13,7 @@
     BackgroundImageSource="wolken_one.jpg">
 
     <ContentPage.Resources>
-        <converters:WinddirectionToImageSourceConverter x:Key="winddirectionToImageSourceConverter" />
+        <converters:WindDirectionToImageSourceConverter x:Key="windDirectionToImageSourceConverter" />
         <converters:WeatherConditionToImageSourceConvert x:Key="weatherConditionToImageSourceConvert" />
     </ContentPage.Resources>
 
@@ -56,7 +56,7 @@
             <Image
                 Grid.Column="0"
                 HeightRequest="50"
-                Source="{Binding WindForecast.WindDirection, Converter={StaticResource winddirectionToImageSourceConverter}}"
+                Source="{Binding WindForecast.WindDirection, Converter={StaticResource windDirectionToImageSourceConverter}}"
                 VerticalOptions="Start"
                 WidthRequest="50" />
 

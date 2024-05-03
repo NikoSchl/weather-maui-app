@@ -34,7 +34,7 @@ namespace WeatherApp.Converters
             // werden muss. Durch das enum wissen wir aber, das in diesem Fall es niemals null sein wird
             // und kann deshalb wegfallen und bei der Konvertierung mit eine (!) definiert werden
 
-            WeatherCondition condition = (WeatherCondition)value!;
+            WeatherConditionCollection condition = (WeatherConditionCollection)value!;
 
 
             // Im switch werden die Werte welche im enum liegen durchgegangen und bestimmt, was
@@ -47,27 +47,27 @@ namespace WeatherApp.Converters
                 // if(WeatherCondition.sunny)
                 // { WeatherCondition condition = _imageSunny }
 
-                case WeatherCondition.sunny:
+                case WeatherConditionCollection.sunny:
                     return _imageSunny;
-                case WeatherCondition.rain:
+                case WeatherConditionCollection.rain:
                     return _imageRain;
-                case WeatherCondition.cloudy:
+                case WeatherConditionCollection.cloudy:
                     return _imageCloudy;
-                case WeatherCondition.suncloud:
+                case WeatherConditionCollection.suncloud:
                     return _imageSunCloud;
-                case WeatherCondition.thunder:
+                case WeatherConditionCollection.thunder:
                     return _imageThunder;
-                case WeatherCondition.snow:
+                case WeatherConditionCollection.snow:
                     return _imageSnow;
-                case WeatherCondition.sunrise:
+                case WeatherConditionCollection.sunrise:
                     return _imageSunrise;
-                case WeatherCondition.sunset:
+                case WeatherConditionCollection.sunset:
                     return _imageSunset;
-                case WeatherCondition.moon:
+                case WeatherConditionCollection.moon:
                     return _imageMoon;
-                case WeatherCondition.nightcloud:
+                case WeatherConditionCollection.nightcloud:
                     return _imageNightCloud;
-                case WeatherCondition.nightrain:
+                case WeatherConditionCollection.nightrain:
                     return _imageNightRain;
                 default:
                     return _imageSunny;

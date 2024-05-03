@@ -13,7 +13,7 @@ using WeatherApp.Views;
 
 namespace WeatherApp.ViewModels
 {
-    public class MainViewModel : NotifyPropertyHelper
+    public class MainViewModel : NotifyPropertyBase
     {
         // Objekt mit den Eigenschaften (Temperatur, Date und enum Condition)
         private HourlyForecast? _hourlyForecast;
