@@ -19,9 +19,10 @@ namespace WeatherApp.ViewModels
 
         public void InitializeData()
         {
+            Random _random = new Random();
             for (int i = 0; i < 4; i++)
             {
-                WeatherDataMainModel WeatherDataModel = WeatherDataMainModel.GenerateDataForMainPage();
+                WeatherDataMainModel WeatherDataModel = WeatherDataMainModel.GenerateDataForTomorrowPage();
                 WeatherDataModel.DayTimeCollection = (DayTimeCollection)i;
                 TomorrowList.Add(WeatherDataModel);
             }

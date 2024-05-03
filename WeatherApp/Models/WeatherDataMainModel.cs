@@ -24,6 +24,8 @@ namespace WeatherApp.Models
 
         private WindForecastModel _windForecastModel;
 
+        private RiskOfRainModel _riskOfRainModel;
+
         // enum
         private WeatherConditionCollection _weatherConditionCollection;
 
@@ -96,6 +98,19 @@ namespace WeatherApp.Models
             }
         }
 
+        public RiskOfRainModel RiskOfRainModel
+        {
+            get { return _riskOfRainModel; }
+            set
+            {
+                if (_riskOfRainModel != value)
+                {
+                    _riskOfRainModel = value;
+                    OnPropertyChanged(nameof(RiskOfRainModel));
+                }
+            }
+        }
+
         public WeatherConditionCollection WeatherConditionCollection
         {
             get { return _weatherConditionCollection; }
@@ -141,13 +156,12 @@ namespace WeatherApp.Models
         }
 
 
-        public WeatherDataMainModel(DateTime tomorrow, int temperature, WindForecastModel windForecastModel, WeatherConditionCollection weatherConditionCollection, DayTimeCollection dayTimeCollection)
+        public WeatherDataMainModel(int temperature, WindForecastModel windForecastModel, RiskOfRainModel riskOfRainModel,WeatherConditionCollection weatherConditionCollection)
         {
-            Tomorrow = tomorrow;
             TemperatureCelsius = temperature;
             WindForecastModel = windForecastModel;
+            RiskOfRainModel = riskOfRainModel;
             WeatherConditionCollection = weatherConditionCollection;
-            DayTimeCollection = dayTimeCollection;
         }
 
 
@@ -159,10 +173,18 @@ namespace WeatherApp.Models
             int temperature = _random.Next(-10,35);
             WindForecastModel windForecastModel = WindForecastModel.GenerateWindForecast();
             WeatherConditionCollection weatherConditionCollection = WeatherConditionModel.GetRandomWeatherConditionShort();
-
             return new WeatherDataMainModel(temperature, windForecastModel, weatherConditionCollection);
         }
 
+
+        public static WeatherDataMainModel GenerateDataForTomorrowPage()
+        {
+            int temperature = _random.Next(-10, 35);
+            WindForecastModel windForecastModel = WindForecastModel.GenerateWindForecast();
+            RiskOfRainModel riskOfRainModel = RiskOfRainModel.GenerateRiskOfRain();
+            WeatherConditionCollection weatherConditionCollection = WeatherConditionModel.GetRandomWeatherConditionShort();
+            return new WeatherDataMainModel(temperature, windForecastModel, riskOfRainModel, weatherConditionCollection);
+        }
 
     }
 }
