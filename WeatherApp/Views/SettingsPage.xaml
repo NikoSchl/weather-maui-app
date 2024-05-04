@@ -32,5 +32,18 @@
 
         <Button Style="{StaticResource _button}" Text="{Static i18n:AppResources.button_save}" />
 
+
+
+
+        <Button
+            Command="{Binding SaveWeatherDataCommand}"
+            Style="{StaticResource _button}"
+            Text="Aktuelles Wetter Speichern" />
+
+        <Button
+            Command="{Binding LoadWeatherDataCommand}"
+            Style="{StaticResource _button}"
+            Text="Lade Wetter" />
+
     </StackLayout>
 </ContentPage>
