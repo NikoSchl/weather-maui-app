@@ -36,33 +36,26 @@
                 <DataTemplate x:DataType="models:WeatherDataModel">
                     <ViewCell>
 
-
                         <Grid
                             Margin="0,0,0,20"
-                            Padding="5,5,15,5"
+                            Padding="0,5,15,5"
                             BackgroundColor="AliceBlue"
-                            ColumnDefinitions=".30*,.35*,.35*"
+                            ColumnDefinitions=".35*,.30*,.35*"
                             HeightRequest="70">
 
                             <!--  Time (Hour)  -->
                             <Label
                                 Grid.Column="0"
-                                HorizontalOptions="Start"
-                                Style="{StaticResource _minmaxhour,
-                                                       _colorLabel}"
-                                Text="{Binding IntHour, StringFormat='{0} Uhr'}"
-                                VerticalOptions="Start"
-                                WidthRequest="87" />
+                                Margin="0,10,10,10"
+                                Style="{StaticResource _minmaxhour}"
+                                Text="{Binding IntHour, StringFormat='{0} Uhr'}" />
 
                             <!--
                                 Das Image bindet sich an die Eigenschaft Condition aus der class HourlyForecast
                                 welche im ViewModel, aktuell, durch ein Random definiert wird. Dieses Binding wird
                                 verknüpft mit dem Converter in welchem die Condition in ein Bild gewandelt wird
                             -->
-                            <Image
-                                Grid.Column="1"
-                                Margin="15,0,0,0"
-                                Source="{Binding WeatherConditionCollection, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
+                            <Image Grid.Column="1" Source="{Binding WeatherConditionCollection, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
 
                             <!--  Temperatur in Grad  -->
                             <Label
