@@ -29,18 +29,53 @@
                 <Setter Property="TextColor" Value="AliceBlue" />
             </Style>
 
-            <!--  Label Min/Max/Hour  -->
-            <Style x:Key="_minmaxhour" TargetType="Label">
-                <Setter Property="FontSize" Value="19" />
-                <Setter Property="TextColor" Value="Navy" />
-            </Style>
-
             <!--  Grundlegendes Layout  -->
             <Style x:Key="_layout" TargetType="StackLayout">
                 <Setter Property="WidthRequest" Value="310" />
                 <Setter Property="HeightRequest" Value="490" />
                 <Setter Property="Opacity" Value="0.8" />
                 <Setter Property="Margin" Value="40" />
+            </Style>
+
+            <!--  Label Min/Max/Hour  -->
+            <Style x:Key="_minmaxhour" TargetType="Label">
+                <Setter Property="FontSize" Value="19" />
+                <Setter Property="TextColor" Value="Navy" />
+            </Style>
+
+            <!--  Settings Label  -->
+            <Style
+                x:Key="_settingsLabel"
+                BaseResourceKey="_minmaxhour"
+                TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="WidthRequest" Value="310" />
+            </Style>
+
+            <!--  Color Label  -->
+            <Style x:Key="_colorLabel" TargetType="Label">
+                <Setter Property="TextTransform" Value="Uppercase" />
+                <Setter Property="BackgroundColor" Value="CornflowerBlue" />
+                <Setter Property="TextColor" Value="AliceBlue" />
+            </Style>
+
+            <!--  Settings Picker  -->
+            <Style x:Key="_settingsPicker" TargetType="Picker">
+                <Setter Property="Margin" Value="0,0,0,20" />
+                <Setter Property="WidthRequest" Value="310" />
+                <Setter Property="TextColor" Value="Navy" />
+                <Setter Property="BackgroundColor" Value="AliceBlue" />
+            </Style>
+
+            <!--  Button  -->
+            <Style x:Key="_button" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Navy" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="25" />
+                <Setter Property="Opacity" Value="0.8" />
             </Style>
 
         </ResourceDictionary>

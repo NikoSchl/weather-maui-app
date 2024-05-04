@@ -6,13 +6,14 @@ namespace WeatherApp.Views;
 public partial class TomorrowForecastPage : ContentPage
 {
 	private readonly TomorrowForecastViewModel _viewModel;
+
 	public TomorrowForecastPage()
 	{
 		InitializeComponent();
         _viewModel = new TomorrowForecastViewModel();
         BindingContext = _viewModel;
 
-		Debug.WriteLine("Created TomorrowForecastPage");
+        Debug.WriteLine("Created TomorrowForecastPage");
 
     }
 
@@ -27,7 +28,6 @@ public partial class TomorrowForecastPage : ContentPage
     {
         base.OnDisappearing();
         Debug.WriteLine("OnDisappering TomorrowForecastPage");
-
     }
 
 }

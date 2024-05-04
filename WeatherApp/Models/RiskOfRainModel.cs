@@ -5,9 +5,11 @@ using System.Text;
 using WeatherApp.Helpers;
 using WeatherApp.Collections;
 using System.Threading.Tasks;
+using WeatherApp.Attribut;
 
 namespace WeatherApp.Models
 {
+    [ForecastTable(Name = "riskOfRain")]
     public class RiskOfRainModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
@@ -24,6 +26,7 @@ namespace WeatherApp.Models
         }
 
 
+        [ForecastColumn(Name = "risk_of_rain", DbTyp = "NVARCHAR (3)")]
         public float RainRiskInProzent
         {
             get { return _rainRiskInProzent; }

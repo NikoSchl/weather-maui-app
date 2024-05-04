@@ -61,6 +61,15 @@ namespace WeatherApp.Resources.Localization {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die save ähnelt.
+        /// </summary>
+        internal static string button_save {
+            get {
+                return ResourceManager.GetString("button_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 24 hour ähnelt.
         /// </summary>
         internal static string label_24hPreview {
@@ -79,11 +88,38 @@ namespace WeatherApp.Resources.Localization {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die City: ähnelt.
+        /// </summary>
+        internal static string label_City {
+            get {
+                return ResourceManager.GetString("label_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Degree: ähnelt.
+        /// </summary>
+        internal static string label_Grad {
+            get {
+                return ResourceManager.GetString("label_Grad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Hourly Forecast ähnelt.
         /// </summary>
         internal static string label_Headline_Hourly {
             get {
                 return ResourceManager.GetString("label_Headline_Hourly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Language: ähnelt.
+        /// </summary>
+        internal static string label_Language {
+            get {
+                return ResourceManager.GetString("label_Language", resourceCulture);
             }
         }
         
@@ -102,15 +138,6 @@ namespace WeatherApp.Resources.Localization {
         internal static string label_Settings {
             get {
                 return ResourceManager.GetString("label_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

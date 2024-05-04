@@ -33,7 +33,7 @@
         <ListView x:Name="_hourlyForecast" ItemsSource="{Binding HourlyForecasts}">
 
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:HourlyForecastModel">
+                <DataTemplate x:DataType="models:WeatherDataModel">
                     <ViewCell>
 
 
@@ -47,11 +47,10 @@
                             <!--  Time (Hour)  -->
                             <Label
                                 Grid.Column="0"
-                                BackgroundColor="CornflowerBlue"
                                 HorizontalOptions="Start"
-                                Style="{StaticResource _minmaxhour}"
+                                Style="{StaticResource _minmaxhour,
+                                                       _colorLabel}"
                                 Text="{Binding IntHour, StringFormat='{0} Uhr'}"
-                                TextColor="AliceBlue"
                                 VerticalOptions="Start"
                                 WidthRequest="87" />
 
@@ -63,7 +62,7 @@
                             <Image
                                 Grid.Column="1"
                                 Margin="15,0,0,0"
-                                Source="{Binding Condition, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
+                                Source="{Binding WeatherConditionCollection, Converter={StaticResource weatherConditionToImageSourceConvert}}" />
 
                             <!--  Temperatur in Grad  -->
                             <Label
@@ -71,7 +70,7 @@
                                 Padding="0,0,15,0"
                                 FontSize="30"
                                 HorizontalTextAlignment="End"
-                                Text="{Binding Temperatur, StringFormat='{0}°'}"
+                                Text="{Binding TemperatureCelsius, StringFormat='{0}°'}"
                                 TextColor="Navy" />
 
                         </Grid>

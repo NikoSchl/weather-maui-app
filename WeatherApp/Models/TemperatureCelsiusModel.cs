@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Helpers;
 using WeatherApp.Collections;
+using WeatherApp.Attribut;
 
 namespace WeatherApp.Models
 {
+    [ForecastTable(Name = "temperatur")]
     public class TemperatureCelsiusModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
@@ -22,6 +24,7 @@ namespace WeatherApp.Models
         private int _minTemperaturCelsius = 0;
       
 
+        [ForecastColumn(Name = "max_Temperatur",DbTyp = "NVARCHAR (3)")]
         public int MaxTemperaturCelsius
         {
             get { return _maxTemperaturCelsius; }
@@ -38,6 +41,7 @@ namespace WeatherApp.Models
             }
         }
 
+        [ForecastColumn(Name = "min_Temperatur", DbTyp = "NVARCHAR (3)")]
         public int MinTemperaturCelsius
         {
             get { return _minTemperaturCelsius; }
@@ -51,7 +55,7 @@ namespace WeatherApp.Models
             }
         }
 
-
+        [ForecastColumn(Name = "Temperatur", DbTyp = "NVARCHAR (3)")]
         public int TemperatureCelsius
         {
             get { return _temperatureCelsius; }

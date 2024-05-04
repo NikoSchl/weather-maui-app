@@ -3,17 +3,34 @@
     x:Class="WeatherApp.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:localization="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:converters="clr-namespace:WeatherApp.Converters"
+    xmlns:i18n="clr-namespace:WeatherApp.Resources.Localization"
+    xmlns:models="clr-namespace:WeatherApp.Models"
     xmlns:viewModels="clr-namespace:WeatherApp.ViewModels"
     Title="Settings"
-    x:DataType="viewModels:SettingsViewModel">
+    x:DataType="viewModels:SettingsViewModel"
+    BackgroundImageSource="wolken_one.jpg">
 
     <StackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Settings"
-            VerticalOptions="Center" />
 
+        <Label
+            Margin="0,40,0,40"
+            Style="{StaticResource _headline}"
+            Text="{Static i18n:AppResources.label_Settings}" />
+
+        <Label Style="{StaticResource _settingsLabel}" Text="{Static i18n:AppResources.label_City}" />
+
+        <Picker Style="{StaticResource _settingsPicker}" />
+
+        <Label Style="{StaticResource _settingsLabel}" Text="{Static i18n:AppResources.label_Language}" />
+
+        <Picker Style="{StaticResource _settingsPicker}" />
+
+        <Label Style="{StaticResource _settingsLabel}" Text="{Static i18n:AppResources.label_Grad}" />
+
+        <Picker Style="{StaticResource _settingsPicker}" />
+
+        <Button Style="{StaticResource _button}" Text="{Static i18n:AppResources.button_save}" />
 
     </StackLayout>
 </ContentPage>

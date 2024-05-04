@@ -13,7 +13,7 @@ namespace WeatherApp.ViewModels
 {
     public class TomorrowForecastViewModel : NotifyPropertyBase
     {
-        public ObservableCollection<WeatherDataMainModel> TomorrowList { get; } = new ObservableCollection<WeatherDataMainModel>();
+        public ObservableCollection<WeatherDataModel> TomorrowList { get; } = new ObservableCollection<WeatherDataModel>();
 
      
 
@@ -22,7 +22,7 @@ namespace WeatherApp.ViewModels
             Random _random = new Random();
             for (int i = 0; i < 4; i++)
             {
-                WeatherDataMainModel WeatherDataModel = WeatherDataMainModel.GenerateDataForTomorrowPage();
+                WeatherDataModel WeatherDataModel = WeatherDataModel.GenerateDataForTomorrowPage();
                 WeatherDataModel.DayTimeCollection = (DayTimeCollection)i;
                 TomorrowList.Add(WeatherDataModel);
             }

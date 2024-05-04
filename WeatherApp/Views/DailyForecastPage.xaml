@@ -90,11 +90,9 @@
                         <Label
                             Grid.Row="3"
                             Margin="0,0,0,5"
-                            BackgroundColor="CornflowerBlue"
                             FontSize="17"
-                            Text="{Binding Condition}"
-                            TextColor="AliceBlue"
-                            TextTransform="Uppercase" />
+                            Style="{StaticResource _colorLabel}"
+                            Text="{Binding Condition}" />
 
                         <!--  //////////////////////////////////////  -->
 
@@ -129,18 +127,10 @@
         </CollectionView>
 
         <Button
-            Margin="20"
             Padding="0"
-            BackgroundColor="Navy"
             Command="{Binding NavigateToDetailPageCommand}"
-            CornerRadius="0"
-            FontAttributes="Bold"
-            FontSize="15"
-            HorizontalOptions="Center"
-            Opacity="0.8"
-            Text="Tomorrow&#10; Forecast"
-            VerticalOptions="Center"
-            WidthRequest="120" />
+            Style="{StaticResource _button}"
+            Text="Tomorrow&#10; Forecast" />
 
     </StackLayout>
 </ContentPage>

@@ -117,17 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_save" xml:space="preserve">
+    <value>save</value>
+    <comment>for the Settingpage</comment>
+  </data>
   <data name="label_24hPreview" xml:space="preserve">
     <value>24 hour</value>
-    <comment>Titel for the Twentyfourhourpage in the AppAhell</comment>
+    <comment>for the Tabbar</comment>
   </data>
   <data name="label_7DayPreview" xml:space="preserve">
     <value>7 Days</value>
-    <comment>Titel for the SevenDayspreviewpage in the AppAhell</comment>
+    <comment>for the Tabbar</comment>
+  </data>
+  <data name="label_City" xml:space="preserve">
+    <value>City:</value>
+    <comment>for the Settingspage</comment>
+  </data>
+  <data name="label_Grad" xml:space="preserve">
+    <value>Degree:</value>
+    <comment>for the Settingspage</comment>
   </data>
   <data name="label_Headline_Hourly" xml:space="preserve">
     <value>Hourly Forecast</value>
     <comment>Text for the Headline 24 Hour</comment>
+  </data>
+  <data name="label_Language" xml:space="preserve">
+    <value>Language:</value>
+    <comment>for the Settingspage</comment>
   </data>
   <data name="label_Main" xml:space="preserve">
     <value>Weather today</value>
@@ -135,9 +151,6 @@
   </data>
   <data name="label_Settings" xml:space="preserve">
     <value>Settings</value>
-    <comment>Titel for the Settingspage in the AppAhell</comment>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+    <comment>for the Tabbar and the Settingspage</comment>
   </data>
 </root>

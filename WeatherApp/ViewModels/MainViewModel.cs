@@ -15,8 +15,8 @@ namespace WeatherApp.ViewModels
 {
     public class MainViewModel : NotifyPropertyBase
     {
-        private WeatherDataMainModel? _weatherDataModel;
-        public WeatherDataMainModel? WeatherDataModel
+        private WeatherDataModel? _weatherDataModel;
+        public WeatherDataModel? WeatherDataModel
         {
             get { return _weatherDataModel; }
             private set
@@ -33,7 +33,7 @@ namespace WeatherApp.ViewModels
 
         public void InitializeData()
         {
-            WeatherDataModel = WeatherDataMainModel.GenerateDataForMainPage();
+            WeatherDataModel = WeatherDataModel.GenerateDataForMainPage();
         }
     }
 }

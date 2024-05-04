@@ -83,12 +83,10 @@
 
         <!--  WeatherCondition Text  -->
         <Label
-            BackgroundColor="CornflowerBlue"
             FontSize="30"
             HeightRequest="56"
+            Style="{StaticResource _colorLabel}"
             Text="{Binding WeatherDataModel.WeatherConditionCollection}"
-            TextColor="AliceBlue"
-            TextTransform="Uppercase"
             WidthRequest="310" />
 
     </StackLayout>

@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using WeatherApp.Helpers;
 using WeatherApp.Collections;
+using WeatherApp.Attribut;
 using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
+    [ForecastTable(Name = "windforecast")]
     public class WindForecastModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
+
 
         //   ------------------ Eigenschaften ------------------ //
 
@@ -20,6 +23,7 @@ namespace WeatherApp.Models
         private WindDirectionCollection _windDirection;
 
 
+        [ForecastColumn(Name = "Windspeed_kmh", DbTyp ="NVARCHAR (3)")]
         public float WindSpeedKmh
         {
             get { return _windSpeedKmh; }
@@ -33,6 +37,8 @@ namespace WeatherApp.Models
             }
         }
 
+
+        [ForecastColumn(Name ="Winddirection", DbTyp = "NVARCHAR (50)")]
         public WindDirectionCollection WindDirection
         {
             get

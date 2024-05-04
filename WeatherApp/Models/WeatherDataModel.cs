@@ -7,10 +7,12 @@ using WeatherApp.Models;
 using WeatherApp.Collections;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using WeatherApp.Attribut;
 
 namespace WeatherApp.Models
 {
-    public class WeatherDataMainModel : NotifyPropertyBase
+    [ForecastTable(Name = "wetterdaten")]
+    public class WeatherDataModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
 
@@ -30,6 +32,9 @@ namespace WeatherApp.Models
         private WeatherConditionCollection _weatherConditionCollection;
 
         private DayTimeCollection _dayTimeCollection;
+
+        // für die Stunde (Hour) in der 24-Stunden-View-Ansicht
+        private int _intHour = 0;
         private DateTime _tomorrow = DateTime.Today.AddDays(1);
 
         public DateTime Tomorrow
@@ -45,6 +50,20 @@ namespace WeatherApp.Models
             }
         }
 
+        public int IntHour
+        {
+            get { return _intHour; }
+            set
+            {
+                if (_intHour != value)
+                {
+                    _intHour = value;
+                    OnPropertyChanged(nameof(IntHour));
+                }
+            }
+        }
+
+        [ForecastColumn(Name = "Datum", DbTyp = ("DATETIME"))]
         public DateTime Date
         {
             get { return _date; }
@@ -140,12 +159,12 @@ namespace WeatherApp.Models
 
         //   ------------------ Konstruktoren ------------------ //
 
-        public WeatherDataMainModel()
+        public WeatherDataModel()
         {
         }
 
-
-        public WeatherDataMainModel(int temperature, WindForecastModel windForecastModel, WeatherConditionCollection weatherConditionCollection)
+        // Mainpage
+        public WeatherDataModel(int temperature, WindForecastModel windForecastModel, WeatherConditionCollection weatherConditionCollection)
         {
             Date = DateTime.Now;
             _timer = new Timer(new TimerCallback((s) => Date = DateTime.Now), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
@@ -155,8 +174,8 @@ namespace WeatherApp.Models
             WeatherConditionCollection = weatherConditionCollection;
         }
 
-
-        public WeatherDataMainModel(int temperature, WindForecastModel windForecastModel, RiskOfRainModel riskOfRainModel,WeatherConditionCollection weatherConditionCollection)
+        // TomorrowPage
+        public WeatherDataModel(int temperature, WindForecastModel windForecastModel, RiskOfRainModel riskOfRainModel,WeatherConditionCollection weatherConditionCollection)
         {
             TemperatureCelsius = temperature;
             WindForecastModel = windForecastModel;
@@ -164,26 +183,39 @@ namespace WeatherApp.Models
             WeatherConditionCollection = weatherConditionCollection;
         }
 
+        // HourlyPage
+        public WeatherDataModel(int temperature, WeatherConditionCollection weatherConditionCollection)
+        {
+            TemperatureCelsius = temperature;
+            WeatherConditionCollection = weatherConditionCollection;
+        }
 
 
         //   ------------------ Methoden zum generieren von Mockup Daten ------------------ //
 
-        public static WeatherDataMainModel GenerateDataForMainPage()
+        public static WeatherDataModel GenerateDataForMainPage()
         {
             int temperature = _random.Next(-10,35);
             WindForecastModel windForecastModel = WindForecastModel.GenerateWindForecast();
             WeatherConditionCollection weatherConditionCollection = WeatherConditionModel.GetRandomWeatherConditionShort();
-            return new WeatherDataMainModel(temperature, windForecastModel, weatherConditionCollection);
+            return new WeatherDataModel(temperature, windForecastModel, weatherConditionCollection);
         }
 
 
-        public static WeatherDataMainModel GenerateDataForTomorrowPage()
+        public static WeatherDataModel GenerateDataForTomorrowPage()
         {
             int temperature = _random.Next(-10, 35);
             WindForecastModel windForecastModel = WindForecastModel.GenerateWindForecast();
             RiskOfRainModel riskOfRainModel = RiskOfRainModel.GenerateRiskOfRain();
             WeatherConditionCollection weatherConditionCollection = WeatherConditionModel.GetRandomWeatherConditionShort();
-            return new WeatherDataMainModel(temperature, windForecastModel, riskOfRainModel, weatherConditionCollection);
+            return new WeatherDataModel(temperature, windForecastModel, riskOfRainModel, weatherConditionCollection);
+        }
+
+        public static WeatherDataModel GenerateDataForHourlyPage()
+        {
+            int temperature = _random.Next(-10, 35);
+            WeatherConditionCollection weatherConditionCollection = WeatherConditionModel.GetRandomWeatherConditionShort();
+            return new WeatherDataModel(temperature, weatherConditionCollection);
         }
 
     }

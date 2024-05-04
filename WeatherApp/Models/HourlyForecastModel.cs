@@ -8,10 +8,9 @@ using WeatherApp.Helpers;
 
 namespace WeatherApp.Models
 {
+    [Obsolete("This class is obsolet. Use WeatherDataMainModel")]
     public class HourlyForecastModel : WeatherConditionModel
     {
-        private static readonly Random _random = new Random();
-
         private float _temperatur = 25;
 
         // für die Uhrzeit/Stunde und fürs Datum
@@ -23,6 +22,7 @@ namespace WeatherApp.Models
 
 
 
+        [Obsolete("This Property is obsolet. Use the Temperature from TemperatureCelsiusModel")]
         public float Temperatur
         {
             get { return _temperatur; }
@@ -61,16 +61,6 @@ namespace WeatherApp.Models
                 }
             }
         }
-
-
-        public HourlyForecastModel()
-        {
-        }
-
-
-
-
-
 
 
     }
