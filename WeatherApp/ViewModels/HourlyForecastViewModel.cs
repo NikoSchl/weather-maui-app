@@ -86,7 +86,6 @@ namespace WeatherApp.ViewModels
                 // Objekt wird in die Liste(ObservableCollection) hinzugefügt und 
                 // gleichzeitig ein neues Objekt der class HourlyForecast erstellt 
                 HourlyForecasts.Add(new WeatherDataModel { WeatherConditionCollection = condition, TemperatureCelsius = Random.Next(-5, 30), IntHour = hour });
-              //  HourlyForecasts.Add(new HourlyForecastModel { Condition = condition, Temperatur = Random.Next(-5, 30), IntHour = hour });
 
 
                 // Prüfung, wenn die Variable für die Sunde 23 beträgt, setze den Wert auf 0
