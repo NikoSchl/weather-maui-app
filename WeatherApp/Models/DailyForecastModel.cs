@@ -23,7 +23,7 @@ namespace WeatherApp.Models
 
         private string _weekday = string.Empty;
 
-
+        [Obsolete("This Property is obsolete. Use the MaxTemperature from TemperatureCelsiusModel")]
         public float MaxTemperatur
         {
             get { return _maxTemperatur; }
@@ -40,6 +40,7 @@ namespace WeatherApp.Models
             }
         }
 
+        [Obsolete("This Property is obsolete. Use the MinTemperature from TemperatureCelsiusModel")]
         public float MinTemperatur
         {
             get { return _minTemperatur; }

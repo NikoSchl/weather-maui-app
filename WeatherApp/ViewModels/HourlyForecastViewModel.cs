@@ -25,7 +25,6 @@ namespace WeatherApp.ViewModels
 
 
         // Variable für das enum wird erstellt
-
         WeatherConditionCollection condition = WeatherConditionCollection.snow;
 
 
@@ -83,8 +82,6 @@ namespace WeatherApp.ViewModels
                 }
 
 
-                // Objekt wird in die Liste(ObservableCollection) hinzugefügt und 
-                // gleichzeitig ein neues Objekt der class HourlyForecast erstellt 
                 HourlyForecasts.Add(new WeatherDataModel { WeatherConditionCollection = condition, TemperatureCelsius = Random.Next(-5, 30), IntHour = hour });
 
 

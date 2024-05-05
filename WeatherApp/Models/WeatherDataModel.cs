@@ -6,62 +6,36 @@ using WeatherApp.Helpers;
 using WeatherApp.Models;
 using WeatherApp.Collections;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using WeatherApp.Attribut;
 
 namespace WeatherApp.Models
 {
     [ForecastTable(Name = "wetterdaten")]
+    [Serializable]
     public class WeatherDataModel : NotifyPropertyBase
     {
         private static readonly Random _random = new Random();
 
-
-        //   ------------------ Eigenschaften ------------------ //
-
-        private DateTime _date;
+        private DateTime _date = DateTime.UtcNow;
         private Timer _timer;
+        private DateTime _tomorrow = DateTime.Today.AddDays(1);
 
+        private int _intHour = 0;
         private int _temperatureCelsius = 0;
 
+        private TemperatureCelsiusModel _temperatureCelsiusModel;
         private WindForecastModel _windForecastModel;
-
         private RiskOfRainModel _riskOfRainModel;
 
         // enum
         private WeatherConditionCollection _weatherConditionCollection;
-
         private DayTimeCollection _dayTimeCollection;
 
-        // für die Stunde (Hour) in der 24-Stunden-View-Ansicht
-        private int _intHour = 0;
-        private DateTime _tomorrow = DateTime.Today.AddDays(1);
 
-        public DateTime Tomorrow
-        {
-            get { return _tomorrow; }
-            set
-            {
-                if (_tomorrow != value)
-                {
-                    _tomorrow = value;
-                    OnPropertyChanged(nameof(Tomorrow));
-                }
-            }
-        }
+        //   ------------------ Eigenschaften ------------------ //
 
-        public int IntHour
-        {
-            get { return _intHour; }
-            set
-            {
-                if (_intHour != value)
-                {
-                    _intHour = value;
-                    OnPropertyChanged(nameof(IntHour));
-                }
-            }
-        }
 
         [ForecastColumn(Name = "Datum", DbTyp = ("DATETIME"))]
         public DateTime Date
@@ -90,6 +64,33 @@ namespace WeatherApp.Models
             }
         }
 
+        public DateTime Tomorrow
+        {
+            get { return _tomorrow; }
+            set
+            {
+                if (_tomorrow != value)
+                {
+                    _tomorrow = value;
+                    OnPropertyChanged(nameof(Tomorrow));
+                }
+            }
+        }
+
+        public int IntHour
+        {
+            get { return _intHour; }
+            set
+            {
+                if (_intHour != value)
+                {
+                    _intHour = value;
+                    OnPropertyChanged(nameof(IntHour));
+                }
+            }
+        }
+
+
         public int TemperatureCelsius
         {
             get { return _temperatureCelsius; }
@@ -103,7 +104,20 @@ namespace WeatherApp.Models
             }
         }
 
-      
+        public TemperatureCelsiusModel TemperatureCelsiusModel
+        {
+            get { return _temperatureCelsiusModel; }
+            set
+            {
+                if (_temperatureCelsiusModel != value)
+                {
+                    _temperatureCelsiusModel = value;
+                    OnPropertyChanged(nameof(TemperatureCelsiusModel));
+                }
+            }
+        }
+
+
         public WindForecastModel WindForecastModel
         {
             get { return _windForecastModel; }
@@ -161,13 +175,22 @@ namespace WeatherApp.Models
 
         public WeatherDataModel()
         {
+            Date = DateTime.UtcNow;
+            _timer = new Timer(new TimerCallback((s) => Date = DateTime.UtcNow), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+        }
+
+        // HourlyPage
+        public WeatherDataModel(int temperature, WeatherConditionCollection weatherConditionCollection)
+        {
+            TemperatureCelsius = temperature;
+            WeatherConditionCollection = weatherConditionCollection;
         }
 
         // Mainpage
         public WeatherDataModel(int temperature, WindForecastModel windForecastModel, WeatherConditionCollection weatherConditionCollection)
         {
-            Date = DateTime.Now;
-            _timer = new Timer(new TimerCallback((s) => Date = DateTime.Now), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+            Date = DateTime.UtcNow;
+            _timer = new Timer(new TimerCallback((s) => Date = DateTime.UtcNow), null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
 
             TemperatureCelsius = temperature;
             WindForecastModel = windForecastModel;
@@ -183,15 +206,13 @@ namespace WeatherApp.Models
             WeatherConditionCollection = weatherConditionCollection;
         }
 
-        // HourlyPage
-        public WeatherDataModel(int temperature, WeatherConditionCollection weatherConditionCollection)
-        {
-            TemperatureCelsius = temperature;
-            WeatherConditionCollection = weatherConditionCollection;
-        }
-
 
         //   ------------------ Methoden zum generieren von Mockup Daten ------------------ //
+
+        public string GetCsvStringRepresentation()
+        {
+            return $"{Date},{TemperatureCelsius},{WeatherConditionCollection}" + Environment.NewLine;
+        }
 
         public static WeatherDataModel GenerateDataForMainPage()
         {

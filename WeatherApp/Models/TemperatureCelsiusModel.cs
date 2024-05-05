@@ -15,14 +15,28 @@ namespace WeatherApp.Models
     {
         private static readonly Random _random = new Random();
 
-
-        //   ------------------ Eigenschaften ------------------ //
-
         private int _temperatureCelsius = 0;
 
         private int _maxTemperaturCelsius = 0;
         private int _minTemperaturCelsius = 0;
-      
+
+
+        //   ------------------ Eigenschaften ------------------ //
+
+
+        [ForecastColumn(Name = "Temperatur", DbTyp = "NVARCHAR (3)")]
+        public int TemperatureCelsius
+        {
+            get { return _temperatureCelsius; }
+            set
+            {
+                if (_temperatureCelsius != value)
+                {
+                    _temperatureCelsius = value;
+                    OnPropertyChanged(nameof(TemperatureCelsius));
+                }
+            }
+        }
 
         [ForecastColumn(Name = "max_Temperatur",DbTyp = "NVARCHAR (3)")]
         public int MaxTemperaturCelsius
@@ -55,20 +69,7 @@ namespace WeatherApp.Models
             }
         }
 
-        [ForecastColumn(Name = "Temperatur", DbTyp = "NVARCHAR (3)")]
-        public int TemperatureCelsius
-        {
-            get { return _temperatureCelsius; }
-            set
-            {
-                if (_temperatureCelsius != value)
-                {
-                    _temperatureCelsius = value;
-                    OnPropertyChanged(nameof(TemperatureCelsius));
-                }
-            }
-        }
-
+       
 
         //   ------------------ Konstruktoren ------------------ //
 
@@ -98,7 +99,11 @@ namespace WeatherApp.Models
 
         public static TemperatureCelsiusModel GenerateTemperature()
         {
-            return new TemperatureCelsiusModel(_random.Next(-10, 35), _random.Next(10, 35), _random.Next(-10, 10));
+            TemperatureCelsiusModel temperatureCelsiusModel = new TemperatureCelsiusModel();
+            temperatureCelsiusModel.TemperatureCelsius = _random.Next(-10, 35);
+            temperatureCelsiusModel.MinTemperaturCelsius = _random.Next(-10, 10);
+            temperatureCelsiusModel.MaxTemperaturCelsius = _random.Next(10, 35);
+            return temperatureCelsiusModel;
         }
     }
 }
