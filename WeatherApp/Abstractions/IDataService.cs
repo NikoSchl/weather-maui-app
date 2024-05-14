@@ -8,5 +8,6 @@ namespace WeatherApp.Abstractions
 {
     public interface IDataService
     {
+
     }
 }
