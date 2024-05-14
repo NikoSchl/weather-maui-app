@@ -58,6 +58,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Behaviors\**" />
+	  <AndroidResource Remove="Trigger\**" />
+	  <Compile Remove="Behaviors\**" />
+	  <Compile Remove="Trigger\**" />
+	  <EmbeddedResource Remove="Behaviors\**" />
+	  <EmbeddedResource Remove="Trigger\**" />
+	  <MauiCss Remove="Behaviors\**" />
+	  <MauiCss Remove="Trigger\**" />
+	  <MauiXaml Remove="Behaviors\**" />
+	  <MauiXaml Remove="Trigger\**" />
+	  <None Remove="Behaviors\**" />
+	  <None Remove="Trigger\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -103,9 +118,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Behaviors\" />
 	  <Folder Include="Resources\Files\" />
-	  <Folder Include="Trigger\" />
 	</ItemGroup>
 
 </Project>
