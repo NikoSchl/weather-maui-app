@@ -30,20 +30,28 @@
 
         <Picker Style="{StaticResource _settingsPicker}" />
 
-        <Button Style="{StaticResource _button}" Text="{Static i18n:AppResources.button_save}" />
-
-
-
-
         <Button
+            Margin="0,10,0,0"
+            CornerRadius="5"
+            Style="{StaticResource _button}"
+            Text="{Static i18n:AppResources.button_save}"
+            WidthRequest="150" />
+
+        <!--<Button
+            Margin="0,10,0,0"
             Command="{Binding SaveWeatherDataCommand}"
+            CornerRadius="5"
             Style="{StaticResource _button}"
-            Text="Aktuelles Wetter Speichern" />
+            Text="Aktuelles Wetter Speichern"
+            WidthRequest="150" />-->
 
-        <Button
+        <!--<Button
+            Margin="0,10,0,0"
             Command="{Binding LoadWeatherDataCommand}"
+            CornerRadius="5"
             Style="{StaticResource _button}"
-            Text="Lade Wetter" />
+            Text="Lade Wetter"
+            WidthRequest="150" />-->
 
     </StackLayout>
 </ContentPage>
